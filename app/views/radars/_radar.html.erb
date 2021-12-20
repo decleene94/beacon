@@ -1,0 +1,12 @@
+<div class="card-trip">
+  <div style="height: 400px">
+      <img style="height: 200px; width: 300px;" src="https://source.unsplash.com/random/?headshot" alt="Card image cap" />
+  </div>
+  <div class="card-trip-infos">
+    <div>
+      <h2><%= radar.time %></h2>
+      <p><%= truncate radar.description, length: 30, separator: /\w+/ %></p>
+    </div>
+    <h2 class="card-trip-pricing">S$<%= radar.radius%> /radius</h2>
+  </div>
+</div>
