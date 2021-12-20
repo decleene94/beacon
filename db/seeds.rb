@@ -28,9 +28,11 @@ puts "****"*20
     email: Faker::Internet.email,
     password: '#123abc',
     first_name: Faker::FunnyName.name,
-    last_name: Faker::Creature::Animal.name
+    last_name: Faker::Creature::Animal.name,
+    latitude: rand(1..3),
+    longitude: rand(100..200)
   )
-  puts "Created user #{user.id}, with name #{user.first_name} #{user.last_name}"
+  puts "Created user #{user.id}, with name #{user.first_name} #{user.last_name}, and lat: #{user.latitude} lon: #{user.longitude} "
 end
 
 puts "****"*20
