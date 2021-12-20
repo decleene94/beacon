@@ -1,6 +1,7 @@
 class RadarsController < ApplicationController
   def index
     @radars = Radar.all
+    # @location = radar.user_id.latitude
   end
 
   def show

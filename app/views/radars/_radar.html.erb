@@ -8,5 +8,6 @@
       <p><%= truncate radar.description, length: 30, separator: /\w+/ %></p>
     </div>
     <h2 class="card-trip-pricing">S$<%= radar.radius%> /radius</h2>
+    <h2 class="card-trip-pricing"><%= radar.user_id.latitude%> /location</h2>
   </div>
 </div>
