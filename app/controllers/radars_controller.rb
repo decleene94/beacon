@@ -1,10 +1,31 @@
 class RadarsController < ApplicationController
   def index
     @radars = Radar.all
-    # @location = radar.user_id.latitude
   end
 
   def show
+    @radar = Radar.find(params[:id])
+    # @latitude = @radar.user.latitude
+  end
+
+  def create
+    @radar = Radar.new(radar_params)
+    @radar.user = current_user
+    # @radar.latitude = current_user.latitude
+    @radar.save
+    redirect_to radars_path
+  end
+
+  def new
+    @radar = Radar.new
+  end
+
+  def delete
+    @radar = Radar.find(params[:id])
+    @user = current_user
+    @radar.destroy
+    # authorize @booking
+    redirect_to radars_path
   end
 
   def edit
@@ -13,14 +34,8 @@ class RadarsController < ApplicationController
   def update
   end
 
-  def create
-  end
-
-  def new
-  end
-
   private
-  def companion_params
-    params.require(:companion).permit(:description, :price, photos: [])
+  def radar_params
+    params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id)
   end
 end
