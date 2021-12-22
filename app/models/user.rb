@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :messages
   has_one :radar
-
+  has_many :participants
 end
