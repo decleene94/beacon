@@ -1,4 +1,5 @@
 class Message < ApplicationRecord
   belongs_to :radar
-  has_one :user
+  belongs_to :user
+  # has_many :participants, through: :radars
 end

@@ -5,6 +5,8 @@ class RadarsController < ApplicationController
   end
 
   def show
+    @radar = Radar.find(params[:id])
+    @message = Message.new
   end
 
   def edit
