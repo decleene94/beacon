@@ -1,13 +1,9 @@
 <div class="card-trip">
-  <div style="height: 400px">
-      <img style="height: 200px; width: 300px;" src="https://source.unsplash.com/random/?headshot" alt="Card image cap" />
-  </div>
-  <div class="card-trip-infos">
-    <div>
-      <h2><%= radar.time %></h2>
-      <p><%= truncate radar.description, length: 30, separator: /\w+/ %></p>
-    </div>
-    <h2 class="card-trip-pricing">S$<%= radar.radius%> /radius</h2>
-    <h2 class="card-trip-pricing"><%= radar.user_id.latitude%> /location</h2>
-  </div>
+    <h2>id: <%= radar.id %></h2>
+    <h2>time: <%= radar.time %></h2>
+    <p>desc: <%= truncate radar.description, length: 30, separator: /\w+/ %></p>
+    <h2>radius: <%= radar.radius %></h2>
+    <h2>user: <%= radar.user.id %></h2>
+    <h2>latitude: <%= radar.user.latitude %></h2>
+    <h2>longitude: <%= radar.user.longitude %></h2>
 </div>
