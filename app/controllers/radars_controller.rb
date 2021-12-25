@@ -5,7 +5,7 @@ class RadarsController < ApplicationController
 
   def show
     @radar = Radar.find(params[:id])
-    # @latitude = @radar.user.latitude
+    @message = Message.new
   end
 
   def create
