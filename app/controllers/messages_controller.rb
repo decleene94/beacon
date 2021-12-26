@@ -7,6 +7,11 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
+      RadarChannel.broadcast_to(
+        @radar,
+        # "hello there"
+        render_to_string(partial: "message", locals: { message: @message })
+      )
       redirect_to radar_path(@radar, anchor: "message-#{@message.id}")
     else
       render "radars/show"
