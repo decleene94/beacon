@@ -18,7 +18,7 @@
           <p class="nav-link"><%= current_user.first_name %></p>
         </li>
         <li class="nav-item dropdown">
-          <img class="avatar dropdown-toggle m-2" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://image.pngaaa.com/441/1494441-middle.png" />
+          <img class="avatar dropdown-toggle m-2" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src=<%= cl_image_path(current_user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> />
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <p class="dropdown-item text-secondary">Welcome, 👋<%= current_user.first_name %></p>
             <%= link_to "Action", "#", class: "dropdown-item" %>
