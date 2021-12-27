@@ -16,3 +16,8 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+import { initRadarCable } from "../channels/radar_channel";
+
+document.addEventListener('turbolinks:load', () => {
+  initRadarCable();
+});

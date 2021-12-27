@@ -1,0 +1,14 @@
+<div class="message-container" id="message-<%= message.id %>">
+  <i class="author">
+    <span><%= message.user.first_name %></span>
+    <small>time</small>
+  </i>
+  <p class="message-content"><%= message.content %></p>
+</div>
+
+<% if false %>
+<div class="message <%= message.from?(current_user) ? "right" : "" %>">
+<%= image_tag message.user.avatar_url, class: "avatar" %>
+<div class="message-content"> <%= message.content %></div>
+</div>
+<% end %>
