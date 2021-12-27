@@ -23,14 +23,21 @@ puts "****"*20
 puts "Creating Users...."
 puts "****"*20
 
+
+# location = [ [1.3009304686855414, 103.86190676209692],
+#               [1.3001823326763027, 103.85776568935245],
+#               [1.29233814536148, 103.8592790120353],
+#               [1.2893853867448841, 103.86342200463666],
+#               [1.2863651667042184, 103.85917300916131]]
+
 5.times do
-  user = User.create!(
+  user = User.create(
     email: Faker::Internet.email,
     password: '#123abc',
     first_name: Faker::FunnyName.name,
     last_name: Faker::Creature::Animal.name,
-    latitude: rand(1..3),
-    longitude: rand(100..200)
+    latitude: 0,
+    longitude: 0
   )
   puts "Created user #{user.id}, with name #{user.first_name} #{user.last_name}, and lat: #{user.latitude} lon: #{user.longitude} "
 end
