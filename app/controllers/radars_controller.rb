@@ -5,8 +5,7 @@ class RadarsController < ApplicationController
       {
         lat: radar.user.latitude,
         lng: radar.user.longitude,
-        # infoWindow: { content: render_to_string(partial: "/radars/map_box",
-        #   locals: { radar: radar }) }
+        infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
       }
     end
   end
@@ -32,7 +31,6 @@ class RadarsController < ApplicationController
     @radar = Radar.find(params[:id])
     @user = current_user
     @radar.destroy
-    # authorize @booking
     redirect_to radars_path
   end
 

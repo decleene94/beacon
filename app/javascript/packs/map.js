@@ -7,11 +7,14 @@ const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
   if (mapElement) {
+  //  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey is not working for me right now.
+  // I had to temporarily insert my api key as seen below to continue building features. Please replace with your mapbox api key to test locally
+
     mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iZXIybWlndWVsIiwiYSI6ImNreHI3aG5xazBnNWgycG1wYWt2c3pkYzIifQ.wWA3X1PpAYh91a7ErOIBfw';
 
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11'
+      style: 'mapbox://styles/mapbox/streets-v11',
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
@@ -56,5 +59,3 @@ const openInfoWindow = (markers) => {
 }
 
 export { initMapbox };
-
-
