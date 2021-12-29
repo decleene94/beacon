@@ -2,7 +2,8 @@
   <div class="row justify-content-center">
     <div class="col-10">
       <div class="chat-header">
-        <h4>#<%= @radar.id %></h4>
+        <h4><%= @radar.user.first_name %>'s beacon</h4>
+        <span>Activity: <%= Activity.find(@radar.activity_id).name %></span>
       </div>
       <div class="messages">
         <div id="messages" data-radar-id="<%= @radar.id %>">
