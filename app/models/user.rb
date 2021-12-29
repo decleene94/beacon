@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :messages
   has_one :radar
   has_many :participants
+  has_one_attached :photo
 end
