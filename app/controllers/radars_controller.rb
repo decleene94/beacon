@@ -1,6 +1,13 @@
 class RadarsController < ApplicationController
   def index
     @radars = Radar.all
+    @markers = @radars.map do |radar|
+      {
+        lat: radar.user.latitude,
+        lng: radar.user.longitude,
+        infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
+      }
+    end
   end
 
   def show
@@ -24,7 +31,6 @@ class RadarsController < ApplicationController
     @radar = Radar.find(params[:id])
     @user = current_user
     @radar.destroy
-    # authorize @booking
     redirect_to radars_path
   end
 

@@ -23,54 +23,74 @@ puts "****"*20
 puts "Creating Users...."
 puts "****"*20
 
-5.times do
-  user = User.create!(
-    email: Faker::Internet.email,
-    password: '#123abc',
-    first_name: Faker::FunnyName.name,
-    last_name: Faker::Creature::Animal.name,
-    latitude: rand(1..3),
-    longitude: rand(100..200)
+
+# location = [ [1.3009304686855414, 103.86190676209692],
+#               [1.3001823326763027, 103.85776568935245],
+#               [1.29233814536148, 103.8592790120353],
+#               [1.2893853867448841, 103.86342200463666],
+#               [1.2863651667042184, 103.85917300916131]]
+
+miguel = User.create!(
+    email: "miguel@123.com",
+    password: "beacon",
+    first_name: "Miguel",
+    last_name: "Vela",
+    latitude: 1.3009304686855414,
+    longitude: 103.86190676209692
   )
-  puts "Created user #{user.id}, with name #{user.first_name} #{user.last_name}, and lat: #{user.latitude} lon: #{user.longitude} "
-end
+
+john = User.create!(
+    email: "john@123.com",
+    password: "beacon",
+    first_name: "John",
+    last_name: "Decl",
+    latitude: 1.29233814536148,
+    longitude: 103.85776568935245
+  )
+
+soonteck = User.create!(
+    email: "st@123.com",
+    password: "beacon",
+    first_name: "Soon Teck",
+    last_name: "Ling",
+    latitude: 1.3001823326763027,
+    longitude: 103.8592790120353
+  )
+
+ann = User.create!(
+    email: "ann@123.com",
+    password: "beacon",
+    first_name: "Ann",
+    last_name: "Koh",
+    latitude: 1.2893853867448841,
+    longitude: 103.86342200463666
+  )
+
+rabea = User.create!(
+    email: "rabea@123.com",
+    password: "beacon",
+    first_name: "Rabea",
+    last_name: "Glei",
+    latitude: 1.2863651667042184,
+    longitude: 103.85917300916131
+  )
 
 puts "****"*20
 puts "Creating Activities..."
 puts "****"*20
 
-10.times do
-  activity = Activity.create(
-    name: Faker::Hobby.activity
-  )
-  puts "Created Activity with activity id #{activity.id} and name #{activity.name}"
-end
+drinks = Activity.create!(name: "Drinks")
+coffee = Activity.create!(name: "Coffee")
+brunch = Activity.create!(name: "Brunch")
+dinner = Activity.create!(name: "Dinner")
+party = Activity.create!(name: "Party")
 
 puts "****"*20
 puts "Creating Radars..."
 puts "****"*20
 
+Radar.create!(time:"ASAP", description:"Looking for a cure for my hangover ", radius: "", user_id: john.id, activity_id: brunch.id)
+Radar.create!(time:"ASAP", description:"I don't want to be lonely tonight", radius: "", user_id: miguel.id, activity_id: drinks.id)
+Radar.create!(time:"ASAP", description:"You gotta fight. For your right. To parrrrrty.", radius: "", user_id: soonteck.id, activity_id: party.id)
 
-3.times do
-  radar = Radar.create(
-    time: "ASAP",
-    description: Faker::TvShows::RickAndMorty.quote,
-    radius: rand(1..5),
-    user_id: User.all.sample.id,
-    activity_id: rand(1..5)
-  )
-  puts "Created Radar with radar id: #{radar.id}, user id: #{radar.user_id}, description: #{radar.description}, radius: #{radar.radius}, activity: #{radar.activity_id}, time: #{radar.time}   "
-end
-
-puts "****"*20
-puts "Creating Participants..."
-puts "****"*20
-
-3.times do
-  participant = Participant.create(
-    user_id: User.all.sample.id,
-    radar_id: Radar.all.sample.id,
-    status: false
-  )
-   puts "Created participant id #{participant.id} | with user id #{participant.user_id} and radar id #{participant.radar_id}"
-end
+puts "seeds created"
