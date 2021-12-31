@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>You are in pages/home!</p>
+<div class="banner">
+  <div class="banner-content text-center">
+    <h1>Welcome to Beacon!</h1>
+    <p>The is a space where you could find you plans</p>
+    <%= link_to "Sign in", new_user_session_path, class: "custom-btn" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "custom-btn custom-btn-sign-up" %>
+  </div>
+</div>

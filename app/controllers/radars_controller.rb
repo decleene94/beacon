@@ -1,4 +1,5 @@
 class RadarsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @radars = Radar.all
     @markers = @radars.map do |radar|
