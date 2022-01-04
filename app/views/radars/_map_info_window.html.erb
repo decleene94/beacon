@@ -1,5 +1,10 @@
-<%# <div class="info-window">
-  <%= radar.description %>
-
-<h2><%= radar.description %></h2>
-<p>Join Button</p>
+<div class = "info-window">
+  <div class = "info-window first">
+    <p><%= "#{radar.user.first_name}'s  Beacon"%></p>
+    <p><%= radar.description %></p>
+  </div>
+  <div class = "info-window second">
+      <img class="avatar dropdown-toggle m-2" src=<%= cl_image_path(radar.user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> />
+    <p><%= link_to "Join", radar_path(radar.id) %></p>
+  </div>
+</div>

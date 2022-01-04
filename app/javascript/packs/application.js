@@ -18,7 +18,7 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 import { initRadarCable } from "../channels/radar_channel";
 import { initMapbox } from '../packs/map';
-import { initGeocoding } from '../channels/geocoding';
+// import { initGeocoding } from '../channels/geocoding';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -29,6 +29,6 @@ document.addEventListener('turbolinks:load', () => {
   initRadarCable();
 });
 
-document.addEventListener('turbolinks:load', () => {
-  initGeocoding();
-});
+// document.addEventListener('turbolinks:load', () => {
+//   initGeocoding();
+// });

@@ -2,6 +2,17 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from '!mapbox-gl';
 
+const successCallback = (position) => {
+    console.log(position.coords.latitude),
+    console.log(position.coords.longitude)
+};
+
+const errorCallback = (error) => {
+  console.error(error);
+};
+
+navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -13,6 +24,16 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
     });
+
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true,
+        showUserHeading: true
+      })
+    );
 
     const markers = JSON.parse(mapElement.dataset.markers);
     // Here we store map markers in an array
