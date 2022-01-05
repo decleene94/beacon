@@ -7,6 +7,7 @@ class RadarsController < ApplicationController
         lat: radar.user.latitude,
         lng: radar.user.longitude,
         infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
+        # image_url: helpers.asset_url('icons8-cocktail-64.png')
       }
     end
   end
