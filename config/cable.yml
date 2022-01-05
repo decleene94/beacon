@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  url: <%= ENV.fetch("REDIS_URL") { "redis://default:CpEO9LeaeDTW98c6SO5pRMIU5ly3mTYK@redis-16630.c3.eu-west-1-1.ec2.cloud.redislabs.com:16630" } %>
   channel_prefix: beacon_production
