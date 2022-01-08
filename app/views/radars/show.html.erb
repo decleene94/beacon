@@ -5,7 +5,11 @@
       <div class="chat-header">
         <h4><%= @radar.user.first_name %>'s beacon</h4>
         <span>Activity: <%= Activity.find(@radar.activity_id).name %></span>
-        <h5>Share to: <%= social_share_button_tag(@radar.user.first_name, :url => "http://www.google.com") %></h5>
+        <!-- Your share button code -->
+        <!--<div class="fb-share-button" data-href="https://beacon-692.herokuapp.com/" data-layout="button" data-size="small">
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbeacon-692.herokuapp.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+        </div>-->
+        <div class="sharethis-inline-share-buttons" style="padding: 20px 20px;"></div>
       </div>
       <div class="messages">
         <div id="messages" data-radar-id="<%= @radar.id %>">
@@ -13,7 +17,6 @@
             <%= render 'messages/message', message: message, user_is_messages_author: message.user == current_user %>
           <% end %>
         </div>
-
       </div>
       <%= simple_form_for [ @radar, @message ], remote: true do |f| %>
         <%= f.input :content, label: false, placeholder: "Message ##{@radar.id}" %>

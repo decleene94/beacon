@@ -1,8 +1,12 @@
 <div class="banner">
   <div class="banner-content text-center">
     <h1>Welcome to Beacon!</h1>
-    <p>The is a space where you could find you plans</p>
-    <%= link_to "Sign in", new_user_session_path, class: "custom-btn" %>
+    <p>Find your plans with Beacon</p>
+    <% if current_user %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "custom-btn" %>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path, class: "custom-btn" %>
+    <% end %>
     <%= link_to "Sign up", new_user_registration_path, class: "custom-btn custom-btn-sign-up" %>
   </div>
 </div>
