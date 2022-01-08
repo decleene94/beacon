@@ -7,15 +7,9 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true%>
     <%= stylesheet_pack_tag 'application' %>
-    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=61d8fff7179d60001978897d&product=inline-share-buttons" async="async"></script>
   </head>
   <body>
     <%= render 'shared/flashes' %>
-    <!--facebook shareable icon tag-->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v12.0" nonce="QQx6BZzL"></script>
-    <!--<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>-->
     <%=  yield %>
     <%= javascript_pack_tag 'map' %>
   </body>
