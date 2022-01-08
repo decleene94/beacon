@@ -9,8 +9,8 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-
 ActiveRecord::Schema.define(version: 2022_01_08_075654) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2022_01_08_075654) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text "content"
+    t.string "content"
     t.bigint "radar_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
