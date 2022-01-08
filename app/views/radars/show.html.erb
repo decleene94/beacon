@@ -16,6 +16,7 @@
       </div>
       <%= simple_form_for [ @radar, @message ], remote: true do |f| %>
         <%= f.input :content, label: false, placeholder: "Message ##{@radar.id}"%>
+        <%= f.submit "send", class: "send-btn"%>
       <% end %>
     </div>
   </div>
