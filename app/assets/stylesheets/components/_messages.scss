@@ -61,18 +61,19 @@ input.form-control {
 }
 
 .chat-header {
-  background-color: #4F2F4C;
+  background: linear-gradient(135deg, #71bea0, #66FCF1);
   color: white;
   padding: 10px 20px;
   margin-top: 10px;
 
-  h4 {
-    margin: 0;
+
+
+  p {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #777777;
   }
-
-  span {
-
-    display: block;
-    color: #8cff35;
+  hr {
+    margin: 10px 0px 10px 0px;
   }
 }

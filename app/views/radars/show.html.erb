@@ -3,9 +3,17 @@
   <div class="row justify-content-center">
     <div class="col-10">
       <div class="chat-header">
-        <h4><%= @radar.user.first_name %>'s beacon</h4>
-        <span>Activity: <%= Activity.find(@radar.activity_id).name %></span>
-        <%= render 'shared/social_media_shareable' %>
+        <h4><i class="fas fa-blog"></i> <%= @radar.user.first_name.capitalize %>'s beacon </h4>
+        <hr>
+        <div class="d-flex justify-content-between">
+          <div>
+            <p style="margin-top: 14px;">Activity: <%= Activity.find(@radar.activity_id).name.capitalize %></p>
+          </div>
+          <div>
+            <%= render 'shared/social_media_shareable' %>
+          </div>
+        </div>
+        <hr>
       </div>
       <div class="messages">
         <div id="messages" data-radar-id="<%= @radar.id %>">
