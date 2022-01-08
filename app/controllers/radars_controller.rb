@@ -19,7 +19,8 @@ class RadarsController < ApplicationController
 
   def create
     @radar = Radar.new(radar_params)
-    @radar.user = current_user
+    # @radar.user = current_user
+    @radar.user_id = current_user
     # @radar.latitude = current_user.latitude
     @radar.save
     redirect_to radars_path
@@ -35,6 +36,13 @@ class RadarsController < ApplicationController
     @radar.destroy
     redirect_to radars_path
   end
+
+# def join
+#   @radar = Radar.find(params[:id])
+#   @radar.participants <<  current_user.id
+#   @participants.save
+#   redirect_to radar_messages_path
+# end
 
   def edit
   end
