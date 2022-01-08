@@ -4,7 +4,7 @@
     <p><%= radar.description %></p>
   </div>
   <div class = "info-window second">
-      <img class="avatar dropdown-toggle m-2" src=<%= cl_image_path(radar.user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> />
+      <img class="avatar m-2" src=<%= cl_image_path(current_user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> />
     <p><%= link_to "Join", radar_path(radar.id), class: "custom-btn custom-btn-sign-up"%></p>
   </div>
 </div>
