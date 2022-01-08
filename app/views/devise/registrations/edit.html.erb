@@ -16,6 +16,9 @@
             <%= f.input :last_name,
                 required: true,
                 input_html: { autocomplete: "last-name" } %>
+            <%= f.input :phone,
+                required: true,
+                input_html: { autocomplete: "phone" }%>
             <%= f.input :photo, as: :file,
                 required: true %>
             <%= f.input :password,

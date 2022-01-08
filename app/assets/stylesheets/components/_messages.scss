@@ -71,9 +71,12 @@ input.form-control {
   }
 
   span {
-    display: inline-block;
-    margin-top: 20px;
-    margin-bottom: 20px;
+
+    display: block;
     color: #8cff35;
   }
+}
+
+.send-btn {
+  margin: 10px 0px;
 }
