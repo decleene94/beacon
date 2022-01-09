@@ -5,6 +5,7 @@
 <small style="padding-left: 8px;"><%= message.created_at.strftime("%l:%M%p") %></small>
 </i>
 <p class="message-content"><%= message.content %></p>
+
 </div>
 <% if false %>
   <div class="message <%= message.from?(current_user) ? "right" : "" %>">
