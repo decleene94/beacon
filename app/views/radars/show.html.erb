@@ -24,7 +24,7 @@
         </div>
       </div>
       <%= simple_form_for [ @radar, @message ], remote: true do |f| %>
-        <%= f.input :content, label: false, placeholder: "Message ##{@radar.id}" %>
+        <%= f.input :content, label: false, placeholder: "type something here" %>
         <%= f.submit "send", class: "btn btn-outline-info mt-2 message-submit-btn"%>
       <% end %>
     </div>
