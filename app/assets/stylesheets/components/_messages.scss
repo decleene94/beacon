@@ -1,13 +1,19 @@
 .messages {
   font-size: 14px;
+  margin-top: 8px;
   color: #868686;
   background-color: #ffffff;
   padding: 20px;
   border: 1px solid #ececec;
   border-top: none;
+  border-radius: 14px;
   border-bottom-width: 0;
   max-height: calc(100vh - 70px - 45px - 61px - 30px);
   overflow: scroll;
+
+  .message-container {
+    margin: 14px 4px;
+  }
 }
 
 .message {
@@ -31,8 +37,8 @@
 }
 
 .avatar {
-  width: 42px;
-  height: 42px;
+  width: 29px;
+  height: 29px;
   border-radius: 50%;
 }
 
@@ -52,29 +58,42 @@ input.form-control {
   box-shadow: none;
   font-size: 14px;
   color: #868686;
+  margin-top: 8px;
+  border-radius: 8px;
+  height: 50px;
 
   &:focus {
     outline: none;
-    border: 1px solid blue;
+    border: 1px solid #85CDCB;
     box-shadow: none;
   }
 }
 
 .chat-header {
-  background-color: #4F2F4C;
+  background: linear-gradient(135deg, #71bea0, #66FCF1);
   color: white;
   padding: 10px 20px;
   margin-top: 10px;
-
+  border-radius: 14px;
   h4 {
-    margin: 0;
+    padding-top: 10px;
   }
 
-  span {
-
-    display: block;
-    color: #8cff35;
+  p {
+    font-size: 16px;
+    font-weight: bolder;
+    color: #777777;
   }
+  hr {
+    margin: 10px 0px 10px 0px;
+  }
+  #beacon-activity {
+    font-size: 30px;
+  }
+}
+
+.message-submit-btn {
+  border-radius: 14px;
 }
 
 .send-btn {
