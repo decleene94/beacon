@@ -3,18 +3,27 @@
   <div class="row justify-content-center">
     <div class="col-10">
       <div class="chat-header">
-        <h4><i class="fas fa-blog"></i> <%= @radar.user.first_name.capitalize %>'s beacon </h4>
-        <hr>
         <div class="d-flex justify-content-between">
-          <div style="margin-top: 6px;">
-            <p style="display: inline;">Activity:</p>
-            <p id="beacon-activity" style="display: inline;"> <%= Activity.find(@radar.activity_id).name.capitalize %></p>
+          <div>
+            <h4><i class="fas fa-blog"></i> <%= @radar.user.first_name.capitalize %>'s beacon </h4>
           </div>
           <div>
             <%= render 'shared/social_media_shareable' %>
           </div>
         </div>
-        <hr>
+<hr>
+        <div class="d-flex justify-content-start">
+          <div style="margin-top: 6px;">
+            <p style="display: inline;">Activity:</p>
+            <p id="beacon-activity" style="display: inline;"> <%= Activity.find(@radar.activity_id).name.capitalize %></p>
+          </div>
+          <div style="margin-top: 6px; margin-left: 30px;">
+            <p style="display: inline;">When:</p>
+            <p id="beacon-activity" style="display: inline;"> <%= @radar.time.to_time.strftime("%l:%M%p") %></p>
+          </div>
+
+        </div>
+<hr>
       </div>
       <div class="messages">
         <div id="messages" data-radar-id="<%= @radar.id %>">
