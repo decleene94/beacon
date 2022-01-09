@@ -6,8 +6,9 @@
         <h4><i class="fas fa-blog"></i> <%= @radar.user.first_name.capitalize %>'s beacon </h4>
         <hr>
         <div class="d-flex justify-content-between">
-          <div>
-            <p style="margin-top: 14px;">Activity: <%= Activity.find(@radar.activity_id).name.capitalize %></p>
+          <div style="margin-top: 6px;">
+            <p style="display: inline;">Activity:</p>
+            <p id="beacon-activity" style="display: inline;"> <%= Activity.find(@radar.activity_id).name.capitalize %></p>
           </div>
           <div>
             <%= render 'shared/social_media_shareable' %>
@@ -24,7 +25,7 @@
       </div>
       <%= simple_form_for [ @radar, @message ], remote: true do |f| %>
         <%= f.input :content, label: false, placeholder: "Message ##{@radar.id}" %>
-        <%= f.submit "send", class: "mt-2"%>
+        <%= f.submit "send", class: "btn btn-outline-info mt-2 message-submit-btn"%>
       <% end %>
     </div>
   </div>
