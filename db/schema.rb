@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2022_01_08_074459) do
-=======
-ActiveRecord::Schema.define(version: 2022_01_08_075654) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 2022_01_09_162941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,26 +60,24 @@ ActiveRecord::Schema.define(version: 2022_01_08_075654) do
   end
 
   create_table "participants", force: :cascade do |t|
-    t.bigint "radar_id", null: false
-    t.bigint "user_id", null: false
-    t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["radar_id"], name: "index_participants_on_radar_id"
-    t.index ["user_id"], name: "index_participants_on_user_id"
+    t.bigint "radar_participant_id", null: false
+    t.bigint "joined_radar_id", null: false
+    t.index ["joined_radar_id"], name: "index_participants_on_joined_radar_id"
+    t.index ["radar_participant_id"], name: "index_participants_on_radar_participant_id"
   end
 
   create_table "radars", force: :cascade do |t|
     t.string "time"
     t.integer "radius"
     t.text "description"
-    t.bigint "user_id", null: false
     t.bigint "activity_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "host_id"
+    t.bigint "creator_id", null: false
     t.index ["activity_id"], name: "index_radars_on_activity_id"
-    t.index ["user_id"], name: "index_radars_on_user_id"
+    t.index ["creator_id"], name: "index_radars_on_creator_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -106,8 +100,8 @@ ActiveRecord::Schema.define(version: 2022_01_08_075654) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "messages", "radars"
   add_foreign_key "messages", "users"
-  add_foreign_key "participants", "radars"
-  add_foreign_key "participants", "users"
+  add_foreign_key "participants", "radars", column: "joined_radar_id"
+  add_foreign_key "participants", "users", column: "radar_participant_id"
   add_foreign_key "radars", "activities"
-  add_foreign_key "radars", "users"
+  add_foreign_key "radars", "users", column: "creator_id"
 end

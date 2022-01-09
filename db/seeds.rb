@@ -7,15 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-<<<<<<< HEAD
-puts "destroying User table"
-User.destroy_all
-puts "destorying Radar table"
-Radar.destroy_all
-puts "destroying Participant table"
-# Participant.destroy_all
-=======
->>>>>>> master
 puts "destroying Message table"
 Message.destroy_all
 puts "destroying Participant table"
