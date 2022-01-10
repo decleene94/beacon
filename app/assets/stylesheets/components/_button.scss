@@ -1,0 +1,13 @@
+  .beacon-join-button {
+    padding: 8px;
+    margin: 15px 1px 0px 0px;
+    background: linear-gradient(282deg, #61c89f, #85CDCB);
+
+    &:hover {
+      text-decoration: none;
+      color: white;
+      // background: linear-gradient(282deg, #85CDCB, #61c89f);
+      box-shadow: 1px 0px 8px 7px rgba(93, 223, 117, 0.5);
+      transition: 0.3s;
+    }
+  }
