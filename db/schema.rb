@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_09_162941) do
+ActiveRecord::Schema.define(version: 2022_01_10_130512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,13 +59,13 @@ ActiveRecord::Schema.define(version: 2022_01_09_162941) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "participants", force: :cascade do |t|
+  create_table "radar_participants", force: :cascade do |t|
+    t.bigint "radar_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "radar_participant_id", null: false
-    t.bigint "joined_radar_id", null: false
-    t.index ["joined_radar_id"], name: "index_participants_on_joined_radar_id"
-    t.index ["radar_participant_id"], name: "index_participants_on_radar_participant_id"
+    t.index ["radar_id"], name: "index_radar_participants_on_radar_id"
+    t.index ["user_id"], name: "index_radar_participants_on_user_id"
   end
 
   create_table "radars", force: :cascade do |t|
@@ -100,8 +100,8 @@ ActiveRecord::Schema.define(version: 2022_01_09_162941) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "messages", "radars"
   add_foreign_key "messages", "users"
-  add_foreign_key "participants", "radars", column: "joined_radar_id"
-  add_foreign_key "participants", "users", column: "radar_participant_id"
+  add_foreign_key "radar_participants", "radars"
+  add_foreign_key "radar_participants", "users"
   add_foreign_key "radars", "activities"
   add_foreign_key "radars", "users", column: "creator_id"
 end

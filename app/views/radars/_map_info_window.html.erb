@@ -1,17 +1,11 @@
 <div class = "info-window">
   <div class = "info-window first">
-    <p><%= "#{radar.user.first_name}'s #{Activity.find(radar.activity_id).name} Beacon"%></p>
+    <p><%= "#{radar.creator.first_name}'s #{Activity.find(radar.activity_id).name} Beacon"%></p>
     <p><%= radar.description %></p>
   </div>
   <div class = "info-window second">
-<<<<<<< HEAD
-      <img class="avatar dropdown-toggle m-2" src=<%= cl_image_path(radar.user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> />
-    <%# <p><%= link_to "Join", radar_path(radar.id), class: "custom-btn custom-btn-sign-up"%>
-    <p><%= link_to "Join", join_path(radar.id), class: "custom-btn custom-btn-sign-up"%></p>
-=======
-      <img class="avatar m-2" src=<%= cl_image_path(radar.user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> />
-    <p><%= link_to "Join", radar_path(radar.id), class: "custom-btn custom-btn-sign-up"%></p>
-    <h5><%= button_to "Follow", follow_user_path(radar.user.id), method: "POST"  %></h5>
->>>>>>> master
+      <img class="avatar m-2" src=<%= cl_image_path(radar.creator.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %>
+      <h5><%= link_to "Join", join_path(radar.id), method: "POST", class: "custom-btn custom-btn-sign-up"  %></h5>
+      <h5><%= button_to "Follow", follow_user_path(radar.creator.id), method: "POST"%></h5>
   </div>
 </div>

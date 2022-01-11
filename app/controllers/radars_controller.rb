@@ -4,8 +4,8 @@ class RadarsController < ApplicationController
     @radars = Radar.all
     @markers = @radars.map do |radar|
       {
-        lat: radar.user.latitude,
-        lng: radar.user.longitude,
+        lat: radar.creator.latitude,
+        lng: radar.creator.longitude,
         infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
         # image_url: helpers.asset_url('icons8-cocktail-64.png')
       }
@@ -20,7 +20,8 @@ class RadarsController < ApplicationController
   def create
     @radar = Radar.new(radar_params)
     # @radar.user = current_user
-    @radar.user_id = current_user
+    @radar.creator = current_user
+    # @radar.user_id = current_user
     # @radar.latitude = current_user.latitude
     @radar.save
     redirect_to radars_path
@@ -36,13 +37,6 @@ class RadarsController < ApplicationController
     @radar.destroy
     redirect_to radars_path
   end
-
-# def join
-#   @radar = Radar.find(params[:id])
-#   @radar.participants <<  current_user.id
-#   @participants.save
-#   redirect_to radar_messages_path
-# end
 
   def edit
   end

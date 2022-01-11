@@ -10,11 +10,11 @@ require 'faker'
 puts "destroying Message table"
 Message.destroy_all
 puts "destroying Participant table"
-Participant.destroy_all
+RadarParticipant.destroy_all
 puts "destorying Radar table"
 Radar.destroy_all
 puts "destroying User table"
-User.destroy_all
+# User.destroy_all
 
 puts "destroying Activity table"
 Activity.destroy_all
@@ -46,17 +46,17 @@ miguel = User.create!(
 miguel_photo = URI.open('https://images.unsplash.com/photo-1515095984775-726a54913d0e')
 miguel.photo.attach(io: miguel_photo, filename: "#{miguel.first_name}.jpeg", content_type:'image/png')
 
-john = User.create!(
-    email: "john@123.com",
-    password: "beacon",
-    first_name: "John",
-    last_name: "Decl",
-    latitude: 1.3247104384513504,
-    longitude: 103.84875188841018
-  )
+# john = User.create!(
+#     email: "john@123.com",
+#     password: "beacon",
+#     first_name: "John",
+#     last_name: "Decl",
+#     latitude: 1.3247104384513504,
+#     longitude: 103.84875188841018
+#   )
 
-john_photo = URI.open('https://avatars.githubusercontent.com/u/88220739?v=4')
-john.photo.attach(io: john_photo, filename: "#{john.first_name}.jpeg", content_type:'image/png')
+# john_photo = URI.open('https://avatars.githubusercontent.com/u/88220739?v=4')
+# john.photo.attach(io: john_photo, filename: "#{john.first_name}.jpeg", content_type:'image/png')
 
 ann = User.create!(
     email: "ann@123.com",
@@ -137,7 +137,7 @@ puts "****"*20
 # Radar.create!(time:"ASAP", description:"Looking for a cure for my hangover ", radius: "", user_id: john.id, activity_id: brunch.id)
 # Radar.create!(time:"ASAP", description:"Wine tasting night. I deserve this!", radius: "", user_id: venga.id, activity_id: drinks.id)
 # Radar.create!(time:"ASAP", description:"You gotta fight. For your right. To parrrrrty.", radius: "", user_id: soonteck.id, activity_id: party.id)
-Radar.create!(time:"ASAP", description:"It's time to open my piggy bank and treat myself with Two Men Bagels", radius: "", user_id: ann.id, activity_id: brunch.id)
+# Radar.create!(time:"ASAP", description:"It's time to open my piggy bank and treat myself with Two Men Bagels", radius: "", user_id: ann.id, activity_id: brunch.id)
 # Radar.create!(time:"ASAP", description:"Farewell dinner with my close friends", radius: "", user_id: rabea.id, activity_id: dinner.id)
 
 

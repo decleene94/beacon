@@ -1,12 +1,10 @@
-class ParticipantsController < ApplicationController
+class RadarParticipantsController < ApplicationController
   before_action :authenticate_user!
 
   def join
     @radar = Radar.find(params[:id])
-    @participant = current_user
-    # @participant.status = "joined"
-    @radar.participants << @participant
-    @radar.save
+    @user = current_user
+    raise
     redirect_to radars_path
   end
 
