@@ -43,7 +43,7 @@ class RadarsController < ApplicationController
       @user = current_user
       @radar.participants << current_user
       @radar.save
-      redirect_to radar_path(radar.id)
+      redirect_to radar_path(@radar)
   end
 
   def leave
@@ -52,8 +52,9 @@ class RadarsController < ApplicationController
       @radar.participants.delete(current_user)
       @radar.save
       redirect_to radars_path
+  end
 
-      def edit
+  def edit
   end
 
   def update
