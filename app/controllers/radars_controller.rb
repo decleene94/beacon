@@ -42,10 +42,18 @@ class RadarsController < ApplicationController
       @radar = Radar.find(params[:id])
       @user = current_user
       @radar.participants << current_user
-      redirect_to radars_path
+      @radar.save
+      redirect_to radar_path(radar.id)
   end
 
-  def edit
+  def leave
+      @radar = Radar.find(params[:id])
+      @user = current_user
+      @radar.participants.delete(current_user)
+      @radar.save
+      redirect_to radars_path
+
+      def edit
   end
 
   def update
