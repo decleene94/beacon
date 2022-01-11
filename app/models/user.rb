@@ -12,9 +12,5 @@ class User < ApplicationRecord
 
   has_many :radars, foreign_key: 'creator_id', class_name: 'Radar'
   has_many :radar_participants
-  has_many :attending_radars, through: :radar_participants, source: :user
-
+  has_many :attending_radars, through: :radar_participants, source: :radar
 end
-
-
-#User.attending_

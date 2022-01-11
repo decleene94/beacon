@@ -4,8 +4,11 @@
     <p><%= radar.description %></p>
   </div>
   <div class = "info-window second">
-      <img class="avatar m-2" src=<%= cl_image_path(radar.creator.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %>
-      <h5><%= link_to "Join", join_path(radar.id), method: "POST", class: "custom-btn custom-btn-sign-up"  %></h5>
-      <h5><%= button_to "Follow", follow_user_path(radar.creator.id), method: "POST"%></h5>
+      <img class="avatar m-2" src=<%= cl_image_path(radar.creator.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %>>
+      <% radar.participants.each do |participant| %>
+        <img class="avatar m-2" src=<%= cl_image_path(participant.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %>>
+      <% end %>
+      <h6><%= link_to "Join", join_radar_path(radar), method: "POST", class: "custom-btn custom-btn-sign-up"  %></h6>
+       <h6><%= button_to "Follow", follow_user_path(radar.creator.id), method: "POST"%></h6>
   </div>
 </div>

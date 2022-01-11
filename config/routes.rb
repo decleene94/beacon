@@ -8,9 +8,10 @@ Rails.application.routes.draw do
 
   resources :radars do
     resources :messages, only: [ :show, :create]
+    post 'join', on: :member
   end
 
   post '/users/:id/follow', to: "users#follow", as: "follow_user"
   post '/users/:id/unfollow', to: "users#unfollow", as: "unfollow_user"
-  post '/radars/:id/join', to: "radar_participants#join", as: "join"
+  # post '/radars/:id/join', to: "radar_participants#join", as: "join"
 end

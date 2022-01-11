@@ -38,6 +38,13 @@ class RadarsController < ApplicationController
     redirect_to radars_path
   end
 
+  def join
+      @radar = Radar.find(params[:id])
+      @user = current_user
+      @radar.participants << current_user
+      redirect_to radars_path
+  end
+
   def edit
   end
 
