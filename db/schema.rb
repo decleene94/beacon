@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_08_075654) do
+ActiveRecord::Schema.define(version: 2022_01_10_130512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,26 +59,25 @@ ActiveRecord::Schema.define(version: 2022_01_08_075654) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "participants", force: :cascade do |t|
+  create_table "radar_participants", force: :cascade do |t|
     t.bigint "radar_id", null: false
     t.bigint "user_id", null: false
-    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["radar_id"], name: "index_participants_on_radar_id"
-    t.index ["user_id"], name: "index_participants_on_user_id"
+    t.index ["radar_id"], name: "index_radar_participants_on_radar_id"
+    t.index ["user_id"], name: "index_radar_participants_on_user_id"
   end
 
   create_table "radars", force: :cascade do |t|
     t.string "time"
     t.integer "radius"
     t.text "description"
-    t.bigint "user_id", null: false
     t.bigint "activity_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "creator_id"
     t.index ["activity_id"], name: "index_radars_on_activity_id"
-    t.index ["user_id"], name: "index_radars_on_user_id"
+    t.index ["creator_id"], name: "index_radars_on_creator_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,8 +100,8 @@ ActiveRecord::Schema.define(version: 2022_01_08_075654) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "messages", "radars"
   add_foreign_key "messages", "users"
-  add_foreign_key "participants", "radars"
-  add_foreign_key "participants", "users"
+  add_foreign_key "radar_participants", "radars"
+  add_foreign_key "radar_participants", "users"
   add_foreign_key "radars", "activities"
-  add_foreign_key "radars", "users"
+  add_foreign_key "radars", "users", column: "creator_id"
 end
