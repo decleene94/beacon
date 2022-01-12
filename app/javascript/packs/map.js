@@ -2,23 +2,14 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from '!mapbox-gl';
 
-const successCallback = (position) => {
-    console.log(position.coords.latitude),
-    console.log(position.coords.longitude)
-};
-
-const errorCallback = (error) => {
-  console.error(error);
-};
-
-navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
   if (mapElement) {
    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey
+
+
 
     const map = new mapboxgl.Map({
       container: 'map',
@@ -34,6 +25,18 @@ const initMapbox = () => {
         showUserHeading: true
       })
     );
+
+    const successCallback = (position) => {
+      console.log(position.coords.latitude),
+      console.log(position.coords.longitude)
+    };
+
+    const errorCallback = (error) => {
+      console.error(error);
+    };
+
+
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
     const markers = JSON.parse(mapElement.dataset.markers);
     // Here we store map markers in an array
