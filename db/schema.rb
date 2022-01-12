@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2022_01_10_130512) do
     t.bigint "activity_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "creator_id", null: false
+    t.bigint "creator_id"
     t.index ["activity_id"], name: "index_radars_on_activity_id"
     t.index ["creator_id"], name: "index_radars_on_creator_id"
   end
