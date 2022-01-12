@@ -28,7 +28,7 @@ class RadarsController < ApplicationController
       if @radar.save
         current_user.follower_ids.each do |follower|
           phone = User.find(follower).phone
-          message = "#{@radar.creator.first_name} has created a new Beacon and are saying the following: '#{@radar.description}'!"
+          message = "#{@radar.creator.first_name} has created a new Beacon and is saying the following: '#{@radar.description}'! Care to join? Click here: http://beacon-692.herokuapp.com/radars/#{@radar.id}"
           TwilioClient.new(message, phone).sms
           format.html { redirect_to radars_path, notice: 'Your Beacon was successfully created.' }
         end
