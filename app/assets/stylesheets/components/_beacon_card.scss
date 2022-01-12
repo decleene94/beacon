@@ -1,13 +1,3 @@
-.card {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  width: 150px;
-  height: 150px;
-  border-radius: 1px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
 .main-container {
   display: flex;
   #map {
@@ -15,6 +5,24 @@
     height: 80vh;
   }
 }
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.card {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  .card-user-section-info {
+
+  }
+}
+
+
 
 @media(max-width: 992px) {
   // .main-container {

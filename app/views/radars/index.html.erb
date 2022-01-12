@@ -5,14 +5,19 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
    <% @radars.each do |radar|  %>
-  <div class="card">
-      <div><img class="avatar m-2" src= <%= cl_image_path(radar.user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> /></div>
-      <div>
-        <p><%= radar.user.first_name.capitalize %></p>
+   <div class="cards">
+    <div class="card">
+      <div class="card-user-section-info">
+        <div><img class="avatar m-2" src= <%= cl_image_path(radar.user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> /></div>
+        <div>
+          <p><%= radar.user.first_name.capitalize %></p>
+        </div>
+        <div>
+          <h5><%= button_to "Follow", follow_user_path(radar.user.id), method: "POST", class:"btn btn-sm btn-outline-info"  %></h5>
+        </div>
       </div>
-      <div>
-        <h5><%= button_to "Follow", follow_user_path(radar.user.id), method: "POST", class:"btn btn-sm btn-outline-info"  %></h5>
-      </div>
-  </div>
-  <% end %>
+    </div>
+    <% end %>
+   </div>
+
 </div>
