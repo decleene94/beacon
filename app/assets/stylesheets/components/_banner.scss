@@ -18,24 +18,3 @@
     font-weight: lighter;
   }
 }
-
-.custom-btn {
-    margin: 15px 10px;
-  	position: relative;
-  	display: inline-block;
-  	padding: 0.8em 0.8em;
-  	text-decoration: none;
-  	text-align: center;
-  	cursor: pointer;
-  	user-select: none;
-  	color: white;
-    border-radius: 4px;
-    transition: box-shadow .5s ease,
-    transform .2s ease;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-}
-
-.custom-btn-sign-up {
-  background: linear-gradient(135deg, #61c89f, #85CDCB);
-}
