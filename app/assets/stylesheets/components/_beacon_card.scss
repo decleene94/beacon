@@ -27,11 +27,13 @@
 
 
 @media(max-width: 992px) {
-
+    #map {
+      max-width: 85%;
+      margin: 0 auto;
+    }
     .cards {
       margin: 10px auto;
     }
-
     .card {
       margin: 10px;
     }
