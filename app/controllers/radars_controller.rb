@@ -51,11 +51,14 @@ class RadarsController < ApplicationController
   end
 
   def join
-      @radar = Radar.find(params[:id])
-      @user = current_user
+    @radar = Radar.find(params[:id])
+    if @radar.participants.include?(current_user)
+      redirect_to radar_path(@radar)
+    else
       @radar.participants << current_user
       @radar.save
       redirect_to radar_path(@radar)
+    end
   end
 
   def leave
