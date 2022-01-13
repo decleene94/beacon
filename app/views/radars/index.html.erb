@@ -4,7 +4,7 @@
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  <div class="cards">
+  <div class="cards col-md-8 col-lg-4">
    <% @radars.each do |radar|  %>
     <div class="card">
       <div class="card-user-section-info">
