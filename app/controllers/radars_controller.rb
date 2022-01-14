@@ -8,6 +8,8 @@ class RadarsController < ApplicationController
         lng: radar.creator.longitude,
         infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
         # image_url: helpers.asset_url('icons8-cocktail-64.png')
+        activity: Activity.all,
+        radar: Radar.all
       }
     end
   end

@@ -13,6 +13,13 @@
   </div>
   <hr>
   <div>
+    <% if radar.creator === current_user %>
+      <p></p>
+    <% else %>
+      <p style="margin: 0px; font-weight: 200;"><%= radar.creator.first_name.capitalize %> is <%= @distance = current_user.distance_to([radar.creator.latitude, radar.creator.longitude])%> km away</p>
+    <% end %>
+  </div>
+  <div>
     <p style="margin: 0px; font-weight: 200;">Participants</p>
       <% if radar.participants.count === 0 %>
         <p style="margin: 0px; font-weight: 200;">Empty</p>
@@ -33,6 +40,10 @@
     </div>
   </div>
   <div>
+    <% if radar.creator === current_user %>
+      <p></p>
+    <% else %>
     <p><%= link_to "Join", join_radar_path(radar), method: "POST", class: "custom-btn custom-btn-join btn-block"  %></p>
+    <% end %>
   </div>
 </div>

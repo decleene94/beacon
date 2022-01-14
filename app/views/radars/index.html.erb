@@ -17,7 +17,11 @@
             <p style="margin: 0px; font-weight: lighter; display: inline;">When :</p>
             <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= radar.time.to_time.strftime("%l:%M%p") %></p>
           </div>
+          <%if radar.creator == current_user %>
+              <p style="margin: 0px; font-weight: 200">Creator</p>
+          <% else %>
           <%= link_to "Join", join_radar_path(radar), method: "POST", class: "beacon-join-button"  %>
+          <% end %>
       </div>
     </div>
     <% end %>
