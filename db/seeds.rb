@@ -33,18 +33,18 @@ puts "****"*20
 #               [1.2893853867448841, 103.86342200463666],
 #               [1.2863651667042184, 103.85917300916131]]
 
-miguel = User.create!(
-    email: "miguel@123.com",
-    password: "beacon",
-    first_name: "Miguel",
-    last_name: "Vela",
-    latitude: 1.3009304686855414,
-    longitude: 103.86190676209692
-  )
+# miguel = User.create!(
+#     email: "miguel@123.com",
+#     password: "beacon",
+#     first_name: "Miguel",
+#     last_name: "Vela",
+#     latitude: 1.3009304686855414,
+#     longitude: 103.86190676209692
+#   )
 
 
-miguel_photo = URI.open('https://images.unsplash.com/photo-1515095984775-726a54913d0e')
-miguel.photo.attach(io: miguel_photo, filename: "#{miguel.first_name}.jpeg", content_type:'image/png')
+# miguel_photo = URI.open('https://images.unsplash.com/photo-1515095984775-726a54913d0e')
+# miguel.photo.attach(io: miguel_photo, filename: "#{miguel.first_name}.jpeg", content_type:'image/png')
 
 # john = User.create!(
 #     email: "john@123.com",
@@ -63,8 +63,7 @@ ann = User.create!(
     password: "beacon",
     first_name: "Ann",
     last_name: "Koh",
-    latitude: 1.3207182217191473,
-    longitude: 103.84316815198513
+    address: '21 Jln Raja Udang Singapore'
   )
 
   ann_photo = URI.open('https://avatars.githubusercontent.com/u/55132447?v=4')
