@@ -5,18 +5,17 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <%= link_to "CREATE A BEACON", new_radar_path(), class: "nav-link btn btn-outline-info m-2" %>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active nav-item-str">
-          <%= link_to "Home", root_path, class: "nav-link" %>
+        <li class="nav-item-str">
+          <%= link_to "CREATE A BEACON", new_radar_path(), class: "beacon-join-button" %>
         </li>
-        <li class="nav-item nav-item-str">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+        <li class="nav-item-str">
+          <p>Beacon created: <%= current_user.beacon %></p>
         </li>
-        <li class="nav-item nav-item-str">
-          <p class="nav-link"><%= current_user.first_name %></p>
+        <li class="nav-item-str">
+          <p><%= current_user.first_name %></p>
         </li>
         <li class="nav-item dropdown">
           <img class="avatar-large dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src=<%= cl_image_path(current_user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %> />
