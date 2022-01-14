@@ -14,14 +14,14 @@
         <hr>
         <div class="d-flex justify-content-start">
           <div style="margin-top: 6px;">
-            <p style="margin: 0px">Activity</p>
-            <p style="margin: 0px" id="beacon-activity"> <%= Activity.find(@radar.activity_id).name.capitalize %></p>
+            <p style="margin: 0px; font-weight: 200;">Activity</p>
+            <p style="margin: 0px; font-weight: bolder;" id="beacon-activity"> <%= Activity.find(@radar.activity_id).name.capitalize %></p>
           </div>
           <div style="margin-top: 6px; margin-left: 30px;">
-            <p style="margin: 0px">When</p>
-            <p style="margin: 0px" id="beacon-activity"> <%= @radar.time.to_time.strftime("%l:%M%p") %></p>
+            <p style="margin: 0px; font-weight: 200;">When</p>
+            <p style="margin: 0px; font-weight: bolder;" id="beacon-activity"> <%= @radar.time.to_time.strftime("%l:%M%p") %></p>
           </div>
-          <p><%= link_to "Leave", leave_radar_path(@radar), method: "POST", class: "custom-btn custom-btn-join btn-block"%></p>
+          <p style="margin: 0px 30px 0px 70px;"><%= link_to "Leave", leave_radar_path(@radar), method: "POST", class: "custom-btn custom-btn-join"%></p>
         </div>
       </div>
       <div class="messages">
