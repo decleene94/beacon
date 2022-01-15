@@ -11,7 +11,6 @@ class Radar < ApplicationRecord
   def self.active
     first_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 0, 0, 0, 0)
     second_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 23, 59, 59, 0)
-    where(time: first_date..second_date )
+    where(time: first_date..second_date)
   end
-
 end
