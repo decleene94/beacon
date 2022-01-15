@@ -37,15 +37,11 @@ const initMapbox = () => {
         customMarker.innerHTML = '<i class="fas fa-glass-cheers"></i>';
         customMarker.style.color = '#1AB8C7';
         customMarker.style.backgroundSize = 'contain';
-        customMarker.style.width = '25px';
-        customMarker.style.height = '25px';
       } else if (marker.activity === 2) {
         customMarker.className = 'marker';
         customMarker.innerHTML = '<i class="fas fa-coffee"></i>';
         customMarker.style.color = '#1AB8C7';
         customMarker.style.backgroundSize = 'contain';
-        customMarker.style.width = '25px';
-        customMarker.style.height = '25px';
       } else if (marker.activity === 4 ) {
         customMarker.className = 'marker';
         customMarker.innerHTML = '<i class="fas fa-utensils"></i>';
