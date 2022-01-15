@@ -1,7 +1,16 @@
 class RadarsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @radars = Radar.all
+    if params[:order] == 'time'
+      first_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 0, 0, 0, 0)
+      second_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 23, 59, 59, 0)
+      @radars = Radar.where(time: first_date..second_date )
+    elsif params[:order] == 'distance'
+      @radars = Radar.order('radius')
+    else
+      @radars = Radar.all
+    end
+
     @markers = @radars.map do |radar|
       {
         lat: radar.creator.latitude,
@@ -19,6 +28,7 @@ class RadarsController < ApplicationController
 
   def create
     @radar = Radar.new(radar_params)
+    @radar.time = radar_params[:time].to_datetime
     # @radar.user = current_user
     @radar.creator = current_user
     # @radar.user_id = current_user

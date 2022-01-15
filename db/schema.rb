@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_10_130512) do
+ActiveRecord::Schema.define(version: 2022_01_15_033329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,13 +69,13 @@ ActiveRecord::Schema.define(version: 2022_01_10_130512) do
   end
 
   create_table "radars", force: :cascade do |t|
-    t.string "time"
     t.integer "radius"
     t.text "description"
     t.bigint "activity_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "creator_id"
+    t.datetime "time"
     t.index ["activity_id"], name: "index_radars_on_activity_id"
     t.index ["creator_id"], name: "index_radars_on_creator_id"
   end
