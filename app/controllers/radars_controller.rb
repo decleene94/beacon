@@ -11,12 +11,25 @@ class RadarsController < ApplicationController
     end
 
     @markers = @radars.map do |radar|
-      {
-        lat: radar.creator.latitude,
-        lng: radar.creator.longitude,
-        infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
-        # image_url: helpers.asset_url('icons8-cocktail-64.png')
-      }
+      if radar.private == true
+        radar.creator.follower_ids.each do |id|
+          if current_user.id == id
+            {
+            lat: radar.creator.latitude,
+            lng: radar.creator.longitude,
+            infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
+            # image_url: helpers.asset_url('icons8-cocktail-64.png')
+            }
+          end
+        end
+      else
+        {
+          lat: radar.creator.latitude,
+          lng: radar.creator.longitude,
+          infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
+          # image_url: helpers.asset_url('icons8-cocktail-64.png')
+        }
+      end
     end
   end
 
@@ -30,10 +43,9 @@ class RadarsController < ApplicationController
     @radar.time = radar_params[:time].to_datetime
     # @radar.user = current_user
     @radar.creator = current_user
-    # @radar.user_id = current_user
-    # @radar.latitude = current_user.latitude
     @radar.save
     #respond_to do |format|
+
     if @radar.save
       current_user.follower_ids.each do |follower|
         phone = User.find(follower).phone
@@ -44,7 +56,8 @@ class RadarsController < ApplicationController
       # else
       #   format.html { render :new }
     end
-    # redirect_to radars_path
+    # end
+    redirect_to radars_path
   end
 
   def new
@@ -85,6 +98,6 @@ class RadarsController < ApplicationController
 
   private
   def radar_params
-    params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id)
+    params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id, :private)
   end
 end
