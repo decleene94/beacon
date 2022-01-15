@@ -34,22 +34,21 @@ const initMapbox = () => {
       if (marker.activity === 1) {
         console.log(marker.activity);
         customMarker.className = 'marker';
-        customMarker.innerHTML = '<i class="fas fa-glass-cheers"></i>';
+        customMarker.innerHTML = '<i class="fas fa-glass-cheers fa-3x"></i>';
         customMarker.style.color = '#1AB8C7';
         customMarker.style.backgroundSize = 'contain';
       } else if (marker.activity === 2) {
         customMarker.className = 'marker';
-        customMarker.innerHTML = '<i class="fas fa-coffee"></i>';
+        customMarker.innerHTML = '<i class="fas fa-coffee fa-3x"></i>';
         customMarker.style.color = '#1AB8C7';
         customMarker.style.backgroundSize = 'contain';
       } else if (marker.activity === 4 ) {
         customMarker.className = 'marker';
-        customMarker.innerHTML = '<i class="fas fa-utensils"></i>';
-        customMarker.style.textShadow = '1px 1px 2px black';
+        customMarker.innerHTML = '<i class="fas fa-utensils fa-3x"></i>';
         customMarker.style.color = '#1AB8C7';
       } else if (marker.activity === 5) {
         customMarker.className = 'marker';
-        customMarker.innerHTML = '<i class="fas fa-music"></i>';
+        customMarker.innerHTML = '<i class="fas fa-music fa-3x"></i>';
         customMarker.style.color = '#1AB8C7';
       } else {
         customMarker.className = 'marker';
