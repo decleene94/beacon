@@ -14,10 +14,10 @@ class RadarsController < ApplicationController
 
     @markers = presentable_radars.map do |radar|
       {
-        lat: radar.creator.latitude,
-        lng: radar.creator.longitude,
+        lat: radar.latitude,
+        lng: radar.longitude,
         infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
-        # image_url: helpers.asset_url('icons8-cocktail-64.png')
+        activity: radar.activity_id
       }
     end
   end
