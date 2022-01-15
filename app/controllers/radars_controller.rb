@@ -2,13 +2,12 @@ class RadarsController < ApplicationController
   before_action :authenticate_user!
   def index
     if params[:order] == 'time'
-      first_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 0, 0, 0, 0)
-      second_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 23, 59, 59, 0)
-      @radars = Radar.where(time: first_date..second_date )
+      # to do - test with more beacons that are scheduled for the current day
+      @radars = Radar.active
     elsif params[:order] == 'distance'
       @radars = Radar.order('radius')
     else
-      @radars = Radar.all
+      @radars = Radar.active
     end
 
     @markers = @radars.map do |radar|
