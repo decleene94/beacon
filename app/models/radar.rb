@@ -4,6 +4,9 @@ class Radar < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   has_many :radar_participants
   has_many :participants, through: :radar_participants, source: :user
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
+
 
   scope :unrestricted, -> { active.where(private: false) }
   scope :restricted, -> { active.where(private: true) }
@@ -17,12 +20,6 @@ class Radar < ApplicationRecord
   def self.active
     first_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 0, 0, 0, 0)
     second_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 23, 59, 59, 0)
-    where(time: first_date..second_date )
+    where(time: first_date..second_date)
   end
-
 end
-
-
-#Radar.creator
-#Radar.
-#Radar.guests

@@ -1,14 +1,6 @@
 class RadarsController < ApplicationController
   before_action :authenticate_user!
   def index
-
-    # @active_radars = Radar.active
-    # @radars = []
-    # @active_radars.each do |active_radar|
-    #   @radars << active_radar.private == false
-    # end
-
-    # @radars << Radar.accessible?
     presentable_radars = Radar.presentable(current_user)
 
     if params[:order] == 'time'
@@ -28,11 +20,6 @@ class RadarsController < ApplicationController
         # image_url: helpers.asset_url('icons8-cocktail-64.png')
       }
     end
-
-    p @markers.size
-    @markers.each do |marker|
-      p marker[:lat]
-    end
   end
 
   def show
@@ -42,9 +29,8 @@ class RadarsController < ApplicationController
 
   def create
     @radar = Radar.new(radar_params)
-    @radar.time = radar_params[:time].to_datetime
-    # @radar.user = current_user
     @radar.creator = current_user
+    @radar.time = radar_params[:time].to_datetime
     @radar.save
     #respond_to do |format|
 
@@ -100,18 +86,7 @@ class RadarsController < ApplicationController
 
   private
   def radar_params
-    params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id, :private)
+    params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id, :latitude, :longitude, :private)
   end
 
-  # def accessible?
-  #   private_radars = []
-  #   Radar.active.each do |active_radar|
-  #     private_radars << active_radar if active_radar.private?
-  #   end
-
-    # private_radars.each do |private_radar|
-    #   private_radar.creator.follower_ids.include? current_user.id
-    # end
-
-  # end
 end
