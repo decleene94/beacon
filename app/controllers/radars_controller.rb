@@ -1,35 +1,37 @@
 class RadarsController < ApplicationController
   before_action :authenticate_user!
   def index
+
+    # @active_radars = Radar.active
+    # @radars = []
+    # @active_radars.each do |active_radar|
+    #   @radars << active_radar.private == false
+    # end
+
+    # @radars << Radar.accessible?
+    presentable_radars = Radar.presentable(current_user)
+
     if params[:order] == 'time'
       # to do - test with more beacons that are scheduled for the current day
-      @radars = Radar.active
+      @radars = presentable_radars.sort_by(&:time)
     elsif params[:order] == 'distance'
-      @radars = Radar.order('radius')
+      @radars = presentable_radars.sort_by(&:radius)
     else
-      @radars = Radar.active
+      @radars = presentable_radars
     end
 
-    @markers = @radars.map do |radar|
-      if radar.private == true
-        radar.creator.follower_ids.each do |id|
-          if current_user.id == id
-            {
-            lat: radar.creator.latitude,
-            lng: radar.creator.longitude,
-            infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
-            # image_url: helpers.asset_url('icons8-cocktail-64.png')
-            }
-          end
-        end
-      else
-        {
-          lat: radar.creator.latitude,
-          lng: radar.creator.longitude,
-          infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
-          # image_url: helpers.asset_url('icons8-cocktail-64.png')
-        }
-      end
+    @markers = presentable_radars.map do |radar|
+      {
+        lat: radar.creator.latitude,
+        lng: radar.creator.longitude,
+        infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
+        # image_url: helpers.asset_url('icons8-cocktail-64.png')
+      }
+    end
+
+    p @markers.size
+    @markers.each do |marker|
+      p marker[:lat]
     end
   end
 
@@ -100,4 +102,16 @@ class RadarsController < ApplicationController
   def radar_params
     params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id, :private)
   end
+
+  # def accessible?
+  #   private_radars = []
+  #   Radar.active.each do |active_radar|
+  #     private_radars << active_radar if active_radar.private?
+  #   end
+
+    # private_radars.each do |private_radar|
+    #   private_radar.creator.follower_ids.include? current_user.id
+    # end
+
+  # end
 end
