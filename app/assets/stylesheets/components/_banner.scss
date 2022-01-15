@@ -7,9 +7,11 @@
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("friends.jpeg");
   background-size: cover;
   h1 {
-    color: white;
+    font-size: 70px;
     font-weight: bolder;
-    font-size: 45px;
+    background: -webkit-linear-gradient(-70deg, #a2facf 0%, #64acff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   p {
     color: white;

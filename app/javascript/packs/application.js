@@ -19,11 +19,16 @@ require("channels")
 import { initRadarCable } from "../channels/radar_channel";
 import { initMapbox } from '../packs/map';
 import { initGeocoding } from '../packs/geocoding';
+// import { cardExtendDetails } from "../packs/cards";
 
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
 });
+
+// document.addEventListener("turbolinks:load", () => {
+//   cardExtendDetails();
+// });
 
 document.addEventListener('turbolinks:load', () => {
   initRadarCable();
