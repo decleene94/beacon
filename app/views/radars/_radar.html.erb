@@ -10,11 +10,11 @@
             <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= radar.time.strftime("%l:%M%p") %></p>
           </div>
           <%= link_to "Join", join_radar_path(radar), method: "POST", class: "beacon-join-button"  %>
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDetails<%=radar.id%>" aria-expanded="true" aria-controls="collapseDetails">
           Details
         </button>
       </div>
-      <div class="collapse" id="collapseDetails">
+      <div class="collapse" id="collapseDetails<%=radar.id%>">
         <div class="card-user-beacon-details">
           <div>
             <h4><%= radar.description %></h4>
