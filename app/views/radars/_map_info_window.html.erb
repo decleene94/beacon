@@ -13,13 +13,6 @@
   </div>
   <hr>
   <div>
-    <% if radar.creator === current_user %>
-      <p></p>
-    <% else %>
-      <p style="margin: 0px; font-weight: 200;"><%= radar.creator.first_name.capitalize %> is <%= @distance = current_user.distance_to([radar.latitude, radar.longitude])%> km away</p>
-    <% end %>
-  </div>
-  <div>
     <p style="margin: 0px; font-weight: 200;">Participants</p>
       <% if radar.participants.count === 0 %>
         <p style="margin: 0px; font-weight: 200;">Empty</p>
