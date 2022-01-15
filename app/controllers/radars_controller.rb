@@ -1,6 +1,14 @@
 class RadarsController < ApplicationController
   before_action :authenticate_user!
   def index
+    if params[:order] == 'time'
+      # to do - test with more beacons that are scheduled for the current day
+      @radars = Radar.active
+    elsif params[:order] == 'distance'
+      @radars = Radar.order('radius')
+    else
+      @radars = Radar.active
+    end
     @radars = Radar.all
     @markers = @radars.map do |radar|
       # {
@@ -42,18 +50,20 @@ class RadarsController < ApplicationController
   def create
     @radar = Radar.new(radar_params)
     @radar.creator = current_user
+    @radar.time = radar_params[:time].to_datetime
     @radar.save
-    # respond_to do |format|
-    if @radar.save
-      current_user.follower_ids.each do |follower|
-        phone = User.find(follower).phone
-        message = "#{@radar.creator.first_name} has created a new Beacon and is saying the following: '#{@radar.description}'! Care to join? Click here: http://beacon-692.herokuapp.com/radars/#{@radar.id}"
-        TwilioClient.new(message, phone).sms
-          # format.html { redirect_to radars_path, notice: 'Your Beacon was successfully created.' }
-      end
-    #else
-        # format.html { render :new }
-    end
+    #respond_to do |format|
+
+    # if @radar.save
+    #   current_user.follower_ids.each do |follower|
+    #     phone = User.find(follower).phone
+    #     message = "#{@radar.creator.first_name} has created a new Beacon and is saying the following: '#{@radar.description}'! Care to join? Click here: http://beacon-692.herokuapp.com/radars/#{@radar.id}"
+    #     TwilioClient.new(message, phone).sms
+    #     #format.html { redirect_to radars_path, notice: 'Your Beacon was successfully created.' }
+    #   end
+    #   # else
+    #   #   format.html { render :new }
+    # end
     # end
     redirect_to radars_path
   end

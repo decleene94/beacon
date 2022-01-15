@@ -6,46 +6,12 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
   <div class="cards col-md-8 col-lg-4">
-   <% @radars.each do |radar|  %>
-    <div class="card">
-      <div class="card-user-section-info">
-          <img class="avatar-large" src= <%= cl_image_path(radar.creator.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face) %> />
-          <div>
-            <p style="margin: 0px; font-weight: lighter; display: inline;">Activity :</p>
-            <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= Activity.find(radar.activity_id).name.capitalize %></p>
-          </div>
-          <div>
-            <p style="margin: 0px; font-weight: lighter; display: inline;">When :</p>
-            <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= radar.time.to_time.strftime("%l:%M%p") %></p>
-          </div>
-          <%if radar.creator == current_user %>
-              <p style="margin: 0px; font-weight: 200">Creator</p>
-          <% else %>
-          <%= link_to "Join", join_radar_path(radar), method: "POST", class: "beacon-join-button"  %>
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails">
-          Details
-        </button>
-        <% end %>
-      </div>
-      <div class="collapse" id="collapseDetails">
-        <div class="card-user-beacon-details">
-          <div>
-            <h4><%= radar.description %></h4>
-            <hr>
-          </div>
-          <div>
-            <p>Participants</p>
-            <% if radar.participants.count === 0 %>
-              <p style="margin: 0px; font-weight: 200;">Empty</p>
-            <% else %>
-              <% radar.participants.each do |participant| %>
-              <img class="avatar m-1" src=<%= cl_image_path(participant.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %>>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+    <div class="sort-beacons" style="margin: 8px 0px 0px 10px;">
+      <p>Sort by:
+        <%= link_to "Newest", radars_path(order: 'time') %>,
+        <%= link_to "Distance", radars_path(order: 'distance') %>
+      </p>
     </div>
-    <% end %>
+    <%= render @radars %>
   </div>
 </div>

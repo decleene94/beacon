@@ -1,11 +1,36 @@
-<div class="card-trip row justify-content-center">
-  <div class="col-6 col-sm-12">
-      <h2>id: <%= radar.id %></h2>
-      <h2>user: <%= radar.user.id %></h2>
-      <h2>latitude: <%= radar.latitude %></h2>
-      <h2>longitude: <%= radar.longitude %></h2>
-      <h2>time: <%= radar.time %></h2>
-      <p>desc: <%= truncate radar.description, length: 30, separator: /\w+/ %></p>
-      <h2>radius: <%= radar.radius %></h2>
-  </div>
-</div>
+ <div class="card">
+      <div class="card-user-section-info">
+          <img class="avatar-large" src= <%= cl_image_path(radar.creator.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face) %> />
+          <div>
+            <p style="margin: 0px; font-weight: lighter; display: inline;">Activity :</p>
+            <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= Activity.find(radar.activity_id).name.capitalize %></p>
+          </div>
+          <div>
+            <p style="margin: 0px; font-weight: lighter; display: inline;">When :</p>
+            <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= radar.time.strftime("%l:%M%p") %></p>
+          </div>
+          <%= link_to "Join", join_radar_path(radar), method: "POST", class: "beacon-join-button"  %>
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails">
+          Details
+        </button>
+      </div>
+      <div class="collapse" id="collapseDetails">
+        <div class="card-user-beacon-details">
+          <div>
+            <h4><%= radar.description %></h4>
+            <p><%= radar.radius %>km</p>
+            <hr>
+          </div>
+          <div>
+            <p>Participants</p>
+            <% if radar.participants.count === 0 %>
+              <p style="margin: 0px; font-weight: 200;">Empty</p>
+            <% else %>
+              <% radar.participants.each do |participant| %>
+              <img class="avatar m-1" src=<%= cl_image_path(participant.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %>>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>

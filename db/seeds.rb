@@ -40,7 +40,6 @@ puts "****"*20
 #     last_name: "Vela",
 #     address: '441 Balestier Road Singapore'
 #     # latitude: 1.3009304686855414,
-#     # longitude: 103.86190676209692
 #   )
 
 
