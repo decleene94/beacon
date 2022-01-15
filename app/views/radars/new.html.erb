@@ -9,7 +9,8 @@
         <%= f.input :description, as: :text %>
         <a class="btn btn-info" data-location-target="button" data-action="click->location#getCoordinates">Use my current location</a>
         <%= f.input :longitude, as: :text, disabled: true, input_html: {data: {location_target: 'longitude'}}  %>
-        <%= f.input :latitude, as: :text, disabled: true, input_html: {data: {location_target: 'latitude'}}%>
+        <%= f.input :latitude, as: :text, disabled: true, input_html: {data: {location_target: 'latitude'}} %>
+        <%= f.input :private, as: :boolean, checked_value: true, unchecked_value: false %>
         <%= f.button :submit, class: "btn btn-primary"%>
       <% end %>
     </div>

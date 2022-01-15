@@ -3,7 +3,14 @@
   background: white;
 
   .nav-item-str {
-    padding: 3px 0px 0px 2px;
+    padding: 14px 20px 0px 2px;
+    p {
+      span {
+        font-size: 16px;
+        color: darkturquoise;
+        font-weight: 700;
+      }
+    }
     }
 }
 
