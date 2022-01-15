@@ -4,14 +4,23 @@
   }
 
   .beacon-description {
-    width: 57vh;
-    margin: 7px auto;
-    color: #61c89f;
+     color: #61c89f;
+     text-align: center;
+     margin: 10px;
   }
 }
 
 .cards {
   width: 30%;
+
+  .sort-beacons {
+    margin: 20px 0px 0px 8px;
+
+    a {
+      text-decoration: none;
+      color: #61c89f;
+    }
+  }
 }
 .card {
   background: linear-gradient(183deg, #e2fbf1, #ffffff);
