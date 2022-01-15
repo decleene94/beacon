@@ -1,12 +1,20 @@
 <div class="banner">
-  <div class="banner-content text-center">
-    <h1>Welcome to Beacon!</h1>
-    <p>Find your plans with Beacon</p>
-    <% if current_user %>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "custom-btn" %>
-    <% else %>
-      <%= link_to "Sign in", new_user_session_path, class: "custom-btn" %>
-    <% end %>
-    <%= link_to "Sign up", new_user_registration_path, class: "custom-btn custom-btn-sign-up" %>
+  <div class="beacon-nav-header">
+    <div>
+      <% if current_user %>
+        <span style="padding-right: 16px;"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %></span>
+      <% else %>
+        <span style="padding-right: 16px;"><%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %></span>
+      <% end %>
+      <span><%= link_to "Sign up", new_user_registration_path, class: "btn btn-info" %></span>
+    </div>
+  </div>
+  <div class="banner-content-center">
+    <div>
+      <h1>Welcome to Beacon!</h1>
+    </div>
+    <div>
+      <p>Find your plans with Beacon</p>
+    </div>
   </div>
 </div>

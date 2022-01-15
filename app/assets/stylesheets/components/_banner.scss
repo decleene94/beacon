@@ -1,15 +1,26 @@
 .banner {
   height: 100vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  position: relative;
   // background: linear-gradient(#e66465, #9198e5);
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("friends.jpeg");
   background-size: cover;
+
+  .beacon-nav-header {
+    position: absolute;
+    top: 19px;
+    right: 80px;
+  }
+  .banner-content-center {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   h1 {
-    font-size: 70px;
+    font-size: 104px;
     font-weight: bolder;
-    background: -webkit-linear-gradient(-70deg, #a2facf 0%, #64acff 100%);
+    background: -webkit-linear-gradient(80deg, #78ffbd 31%, #429aff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
