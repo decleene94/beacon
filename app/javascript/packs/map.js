@@ -84,7 +84,6 @@ const openInfoWindow = (markers) => {
     card.addEventListener('click', () => {
       // Here we trigger the display of the corresponding marker infoWindow with the "togglePopup" function provided by mapbox-gl
       if (oldIndex || oldIndex == 0) {
-        debugger
         markers[oldIndex].togglePopup();
         console.log("OLD INDEX")
         console.log(oldIndex)
