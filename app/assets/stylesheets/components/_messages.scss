@@ -5,6 +5,11 @@
   margin-top: 10px;
   border-radius: 14px;
 
+  span {
+    color: white;
+        text-shadow: 1px 1px rgba(0,0,0,0.1);
+  }
+
   .beacon-message-details {
     display: flex;
     justify-content: space-between;
@@ -16,7 +21,9 @@
   }
 
   h4 {
-    padding-top: 10px;
+    font-size: 30px;
+    padding-top: 12px;
+    text-shadow: 2px 1px rgba(0,0,0,0.2)
   }
 
   p {
