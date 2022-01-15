@@ -16,7 +16,7 @@
     <% if radar.creator === current_user %>
       <p></p>
     <% else %>
-      <p style="margin: 0px; font-weight: 200;"><%= radar.creator.first_name.capitalize %> is <%= @distance = current_user.distance_to([radar.creator.latitude, radar.creator.longitude])%> km away</p>
+      <p style="margin: 0px; font-weight: 200;"><%= radar.creator.first_name.capitalize %> is <%= @distance = current_user.distance_to([radar.latitude, radar.longitude])%> km away</p>
     <% end %>
   </div>
   <div>

@@ -1,12 +1,15 @@
 <%= render 'shared/navbar' %>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-6 col-sm-12">
+    <div class="col-6 col-sm-12" data-controller="location">
       <%= simple_form_for @radar do |f| %>
         <%= f.input :activity_id, collection: Activity.all%>
         <%= f.input :time, as: :time, html5: true %>
         <%= f.input :radius, collection: 1..10 %>
         <%= f.input :description, as: :text %>
+        <a class="btn btn-info" data-location-target="button" data-action="click->location#getCoordinates">Use my current location</a>
+        <%= f.input :longitude, as: :text, disabled: true, input_html: {data: {location_target: 'longitude'}}  %>
+        <%= f.input :latitude, as: :text, disabled: true, input_html: {data: {location_target: 'latitude'}}%>
         <%= f.button :submit, class: "btn btn-primary"%>
       <% end %>
     </div>

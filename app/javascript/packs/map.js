@@ -2,20 +2,6 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from '!mapbox-gl';
 
-const successCallback = (position) => {
-  console.log(position.coords.latitude),
-  console.log(position.coords.longitude)
-};
-
-const errorCallback = (error) => {
-  console.error(error);
-};
-
-// Geolocation API is working
-navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-
-
-
 // Creating my map
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -36,6 +22,7 @@ const initMapbox = () => {
         showUserHeading: true
       })
     );
+
     const markers = JSON.parse(mapElement.dataset.markers);
     console.log(markers);
     // Here we store map markers in an array
@@ -52,7 +39,6 @@ const initMapbox = () => {
         customMarker.style.backgroundSize = 'contain';
         customMarker.style.width = '25px';
         customMarker.style.height = '25px';
-
       } else if (marker.activity === 2) {
         customMarker.className = 'marker';
         customMarker.innerHTML = '<i class="fas fa-coffee"></i>';

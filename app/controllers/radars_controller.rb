@@ -4,14 +4,11 @@ class RadarsController < ApplicationController
     @radars = Radar.all
     @markers = @radars.map do |radar|
       {
-        lat: radar.creator.latitude,
-        lng: radar.creator.longitude,
+        lat: radar.latitude,
+        lng: radar.longitude,
         infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
         # image_url: helpers.asset_url('icons8-cocktail-64.png')
         activity: radar.activity_id
-        # properties: {
-        #   activity: radar.activity_id
-        # }
       }
     end
   end
@@ -23,23 +20,20 @@ class RadarsController < ApplicationController
 
   def create
     @radar = Radar.new(radar_params)
-    # @radar.user = current_user
     @radar.creator = current_user
-    # @radar.user_id = current_user
-    # @radar.latitude = current_user.latitude
     @radar.save
-    # respond_to do |format|
-    #   if @radar.save
-    #     current_user.follower_ids.each do |follower|
-    #       phone = User.find(follower).phone
-    #       message = "#{@radar.creator.first_name} has created a new Beacon and is saying the following: '#{@radar.description}'! Care to join? Click here: http://beacon-692.herokuapp.com/radars/#{@radar.id}"
-    #       TwilioClient.new(message, phone).sms
-    #       format.html { redirect_to radars_path, notice: 'Your Beacon was successfully created.' }
-    #     end
-    #   else
-    #     format.html { render :new }
-    #   end
-    # end
+    respond_to do |format|
+      if @radar.save
+        current_user.follower_ids.each do |follower|
+          phone = User.find(follower).phone
+          message = "#{@radar.creator.first_name} has created a new Beacon and is saying the following: '#{@radar.description}'! Care to join? Click here: http://beacon-692.herokuapp.com/radars/#{@radar.id}"
+          TwilioClient.new(message, phone).sms
+          format.html { redirect_to radars_path, notice: 'Your Beacon was successfully created.' }
+        end
+      else
+        format.html { render :new }
+      end
+    end
     redirect_to radars_path
   end
 
@@ -81,6 +75,6 @@ class RadarsController < ApplicationController
 
   private
   def radar_params
-    params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id)
+    params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id, :latitude, :longitude)
   end
 end
