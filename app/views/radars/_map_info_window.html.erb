@@ -29,10 +29,14 @@
     </div>
     <div style="margin-top: 6px; margin-left: 30px;">
       <p style="margin: 0px; font-weight: 200;">When</p>
-    <p style="margin: 0px; font-weight: bolder;" id="beacon-activity"> <%#= radar.time.to_time.strftime("%l:%M%p") %></p>
+    <p style="margin: 0px; font-weight: bolder;" id="beacon-activity"> <%= radar.time.to_time.strftime("%l:%M%p") %></p>
     </div>
   </div>
   <div>
+    <% if radar.creator === current_user %>
+      <p></p>
+    <% else %>
     <p><%= link_to "Join", join_radar_path(radar), method: "POST", class: "custom-btn custom-btn-join btn-block"  %></p>
+    <% end %>
   </div>
 </div>
