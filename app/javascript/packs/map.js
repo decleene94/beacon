@@ -62,17 +62,22 @@ const fitMapToMarkers = (map, markers) => {
 
 const openInfoWindow = (markers) => {
   // Select all cards
+  let oldIndex;
   const cards = document.querySelectorAll('.card');
   cards.forEach((card, index) => {
     // Put a microphone on each card listening for a mouseenter event
-    card.addEventListener('mouseenter', () => {
+    card.addEventListener('click', () => {
       // Here we trigger the display of the corresponding marker infoWindow with the "togglePopup" function provided by mapbox-gl
+      if (oldIndex || oldIndex == 0) {
+        debugger
+        markers[oldIndex].togglePopup();
+        console.log("OLD INDEX")
+        console.log(oldIndex)
+      };
       markers[index].togglePopup();
+      oldIndex = index;
     });
     // We also put a microphone listening for a mouseleave event to close the modal when user doesn't hover the card anymore
-    card.addEventListener('mouseleave', () => {
-      markers[index].togglePopup();
-    });
   });
 }
 
