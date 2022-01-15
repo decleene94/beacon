@@ -7,7 +7,7 @@
           </div>
           <div>
             <p style="margin: 0px; font-weight: lighter; display: inline;">When :</p>
-            <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%#= radar.time.to_time.strftime("%l:%M%p") %></p>
+            <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= radar.time.strftime("%l:%M%p") %></p>
           </div>
           <%= link_to "Join", join_radar_path(radar), method: "POST", class: "beacon-join-button"  %>
           <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails">
