@@ -27,6 +27,9 @@
             <%= f.input :last_name,
                 required: true,
                 input_html: { autocomplete: "last-name" } %>
+             <%= f.input :address,
+                required: true,
+                input_html: { autocomplete: "address-name" } %>
             <%= f.input :photo, as: :file,
                 required: true %>
           </div>

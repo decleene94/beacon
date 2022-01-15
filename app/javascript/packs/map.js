@@ -8,9 +8,12 @@ const initMapbox = () => {
 
   if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey
-      const map = new mapboxgl.Map({
+
+    const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
+        center: [103.84105, 1.3020],
+        zoom: 15
       });
 
     map.addControl(
@@ -84,7 +87,6 @@ const openInfoWindow = (markers) => {
     card.addEventListener('click', () => {
       // Here we trigger the display of the corresponding marker infoWindow with the "togglePopup" function provided by mapbox-gl
       if (oldIndex || oldIndex == 0) {
-        debugger
         markers[oldIndex].togglePopup();
         console.log("OLD INDEX")
         console.log(oldIndex)
