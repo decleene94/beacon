@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_15_033329) do
+
+ActiveRecord::Schema.define(version: 2022_01_15_064704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +78,10 @@ ActiveRecord::Schema.define(version: 2022_01_15_033329) do
     t.bigint "creator_id"
     t.boolean "private", default: false
     t.datetime "time"
+    t.float "longitude"
+    t.float "latitude"
+    t.datetime "time"
+    t.text "address"
     t.index ["activity_id"], name: "index_radars_on_activity_id"
     t.index ["creator_id"], name: "index_radars_on_creator_id"
   end
@@ -94,6 +99,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_033329) do
     t.float "latitude"
     t.float "longitude"
     t.string "phone"
+    t.string "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

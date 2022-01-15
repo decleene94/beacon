@@ -4,6 +4,9 @@ class Radar < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   has_many :radar_participants
   has_many :participants, through: :radar_participants, source: :user
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
+
 
   def self.active
     first_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 0, 0, 0, 0)

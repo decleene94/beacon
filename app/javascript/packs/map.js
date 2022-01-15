@@ -2,28 +2,16 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from '!mapbox-gl';
 
-const successCallback = (position) => {
-    console.log(position.coords.latitude),
-    console.log(position.coords.longitude)
-};
-
-const errorCallback = (error) => {
-  console.error(error);
-};
-
-navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-
-
+// Creating my map
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
   if (mapElement) {
-   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey
-
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-    });
+    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+      });
 
     map.addControl(
       new mapboxgl.GeolocateControl({
@@ -36,15 +24,42 @@ const initMapbox = () => {
     );
 
     const markers = JSON.parse(mapElement.dataset.markers);
+    console.log(markers);
     // Here we store map markers in an array
     const mapMarkers = []
     markers.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow.content);
+      // Custom markers assigned based on Radar Activity
+      const customMarker = document.createElement('div');
+      if (marker.activity === 1) {
+        console.log(marker.activity);
+        customMarker.className = 'marker';
+        customMarker.innerHTML = '<i class="fas fa-glass-cheers fa-3x"></i>';
+        customMarker.style.color = '#1AB8C7';
+        customMarker.style.backgroundSize = 'contain';
+      } else if (marker.activity === 2) {
+        customMarker.className = 'marker';
+        customMarker.innerHTML = '<i class="fas fa-coffee fa-3x"></i>';
+        customMarker.style.color = '#1AB8C7';
+        customMarker.style.backgroundSize = 'contain';
+      } else if (marker.activity === 4 ) {
+        customMarker.className = 'marker';
+        customMarker.innerHTML = '<i class="fas fa-utensils fa-3x"></i>';
+        customMarker.style.color = '#1AB8C7';
+      } else if (marker.activity === 5) {
+        customMarker.className = 'marker';
+        customMarker.innerHTML = '<i class="fas fa-music fa-3x"></i>';
+        customMarker.style.color = '#1AB8C7';
+      } else {
+        customMarker.className = 'marker';
+        customMarker.innerHTML = '<i class="fas fa-hamburger"></i>';
+        customMarker.style.color = '#1AB8C7';
+      }
 
-      const newMarker = new mapboxgl.Marker()
-        .setLngLat([marker.lng, marker.lat])
-        .setPopup(popup)
-        .addTo(map);
+      const newMarker = new mapboxgl.Marker(customMarker)
+      .setLngLat([marker.lng, marker.lat])
+      .setPopup(popup)
+      .addTo(map);
       mapMarkers.push(newMarker)
     });
 
@@ -82,3 +97,17 @@ const openInfoWindow = (markers) => {
 }
 
 export { initMapbox };
+
+// console.log(markers);
+// // Find and store a variable reference to the list of filters.
+// var filters = document.getElementById('filters');
+// // Wait until the marker layer is loaded in order to build a list of possible
+// // types. If you are doing this with another featureLayer, you should change
+// // map.featureLayer to the variable you have assigned to your featureLayer.
+// map.on('ready', function () {
+//   // Collect the types of symbols in this layer. you can also just
+//   // hardcode an array of types if you know what you want to filter on,
+//   // like var types = ['foo', 'bar'];
+//   var types = [1, 2, 3, 4, 5];
+//   var features = markers.get
+// }

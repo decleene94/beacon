@@ -18,9 +18,14 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 import { initRadarCable } from "../channels/radar_channel";
 import { initMapbox } from '../packs/map';
-import { initGeocoding } from '../packs/geocoding';
-// import { cardExtendDetails } from "../packs/cards";
+import { Application } from "stimulus"
+import { definitionsFromContext } from "stimulus/webpack-helpers"
 
+const application = Application.start()
+const context = require.context("./controllers", true, /\.js$/)
+application.load(definitionsFromContext(context))
+
+// import { cardExtendDetails } from "../packs/cards";
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
@@ -33,7 +38,3 @@ document.addEventListener('turbolinks:load', () => {
 document.addEventListener('turbolinks:load', () => {
   initRadarCable();
 });
-
-// document.addEventListener('turbolinks:load', () => {
-//   initGeocoding();
-// });
