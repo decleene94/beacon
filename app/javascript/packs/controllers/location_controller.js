@@ -5,9 +5,9 @@ export default class extends Controller {
   static targets = ['button', 'latitude', 'longitude']
 
   connect() {
-    console.log(this.buttonTarget)
-    console.log(this.latitudeTarget)
-    console.log(this.longitudeTarget)
+    // console.log(this.buttonTarget)
+    // console.log(this.latitudeTarget)
+    // console.log(this.longitudeTarget)
   }
 
   successCallback = (position) => {
@@ -31,7 +31,5 @@ export default class extends Controller {
 
   getCoordinates() {
     navigator.geolocation.getCurrentPosition(this.successCallback, this.errorCallback, this.options());
-  }
-
-
+  };
 }
