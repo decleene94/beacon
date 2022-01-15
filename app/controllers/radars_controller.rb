@@ -1,44 +1,24 @@
 class RadarsController < ApplicationController
   before_action :authenticate_user!
   def index
+    presentable_radars = Radar.presentable(current_user)
+
     if params[:order] == 'time'
       # to do - test with more beacons that are scheduled for the current day
-      @radars = Radar.active
+      @radars = presentable_radars.sort_by(&:time)
     elsif params[:order] == 'distance'
-      @radars = Radar.order('radius')
+      @radars = presentable_radars.sort_by(&:radius)
     else
-      @radars = Radar.active
+      @radars = presentable_radars
     end
-    @radars = Radar.all
-    @markers = @radars.map do |radar|
-      # {
-      #   lat: radar.latitude,
-      #   lng: radar.longitude,
-      #   infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
-      #   # image_url: helpers.asset_url('icons8-cocktail-64.png')
-      #   activity: radar.activity_id
-      # }
-      if radar.private == true
-        radar.creator.follower_ids.each do |id|
-          if current_user.id == id
-            {
-            lat: radar.latitude,
-            lng: radar.longitude,
-            infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
-            # image_url: helpers.asset_url('icons8-cocktail-64.png')
-            activity: radar.activity_id
-            }
-          end
-        end
-      else
-        {
-          lat: radar.latitude,
-          lng: radar.longitude,
-          infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
-          # image_url: helpers.asset_url('icons8-cocktail-64.png')
-          activity: radar.activity_id
-        }
-      end
+
+    @markers = presentable_radars.map do |radar|
+      {
+        lat: radar.creator.latitude,
+        lng: radar.creator.longitude,
+        infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
+        # image_url: helpers.asset_url('icons8-cocktail-64.png')
+      }
     end
   end
 
@@ -54,16 +34,16 @@ class RadarsController < ApplicationController
     @radar.save
     #respond_to do |format|
 
-    # if @radar.save
-    #   current_user.follower_ids.each do |follower|
-    #     phone = User.find(follower).phone
-    #     message = "#{@radar.creator.first_name} has created a new Beacon and is saying the following: '#{@radar.description}'! Care to join? Click here: http://beacon-692.herokuapp.com/radars/#{@radar.id}"
-    #     TwilioClient.new(message, phone).sms
-    #     #format.html { redirect_to radars_path, notice: 'Your Beacon was successfully created.' }
-    #   end
-    #   # else
-    #   #   format.html { render :new }
-    # end
+    if @radar.save
+      current_user.follower_ids.each do |follower|
+        phone = User.find(follower).phone
+        message = "#{@radar.creator.first_name} has created a new Beacon and is saying the following: '#{@radar.description}'! Care to join? Click here: http://beacon-692.herokuapp.com/radars/#{@radar.id}"
+        TwilioClient.new(message, phone).sms
+        #format.html { redirect_to radars_path, notice: 'Your Beacon was successfully created.' }
+      end
+      # else
+      #   format.html { render :new }
+    end
     # end
     redirect_to radars_path
   end
@@ -108,4 +88,5 @@ class RadarsController < ApplicationController
   def radar_params
     params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id, :latitude, :longitude, :private)
   end
+
 end

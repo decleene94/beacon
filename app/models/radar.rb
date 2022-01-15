@@ -8,6 +8,15 @@ class Radar < ApplicationRecord
   after_validation :reverse_geocode
 
 
+  scope :unrestricted, -> { active.where(private: false) }
+  scope :restricted, -> { active.where(private: true) }
+  scope :accessible_by_user, -> (user) {
+    restricted.select do |radar|
+      (radar.creator == user) || (radar.creator.follower_ids.include? user.id)
+    end
+  }
+  scope :presentable, -> (user) { accessible_by_user(user) + unrestricted }
+
   def self.active
     first_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 0, 0, 0, 0)
     second_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 23, 59, 59, 0)
