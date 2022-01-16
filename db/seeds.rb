@@ -51,7 +51,6 @@ puts "****"*20
 #     password: "beacon",
 #     first_name: "John",
 #     last_name: "Decl",
-#     address: '93 Robertson Quay Singapore'
 #   )
 
 # john_photo = URI.open('https://avatars.githubusercontent.com/u/88220739?v=4')
