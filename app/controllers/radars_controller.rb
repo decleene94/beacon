@@ -32,7 +32,6 @@ class RadarsController < ApplicationController
     @radar.creator = current_user
     @radar.time = radar_params[:time].to_datetime
     @radar.save
-    #respond_to do |format|
 
     if @radar.save
       current_user.follower_ids.each do |follower|
@@ -42,9 +41,8 @@ class RadarsController < ApplicationController
         #format.html { redirect_to radars_path, notice: 'Your Beacon was successfully created.' }
       end
       # else
-      #   format.html { render :new }
+      #  format.html { render :new }
     end
-    # end
     redirect_to radars_path
   end
 
@@ -86,7 +84,7 @@ class RadarsController < ApplicationController
 
   private
   def radar_params
-    params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id, :latitude, :longitude, :private)
+    params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id, :latitude, :longitude, :private, :address)
   end
 
 end

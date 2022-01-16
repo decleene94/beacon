@@ -30,9 +30,6 @@
             <a class="btn btn-info" data-location-target="button" data-action="click->location#getCoordinates">Use my current location</a>
             <%= f.input :longitude, input_html: {data: {location_target: 'longitude'}}  %>
             <%= f.input :latitude, input_html: {data: {location_target: 'latitude'}} %>
-            <%= f.input :address,
-                required: true,
-                input_html: { autocomplete: "address-name" } %>
             <%= f.input :photo, as: :file,
                 required: true %>
           </div>
