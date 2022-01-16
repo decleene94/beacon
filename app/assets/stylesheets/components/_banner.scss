@@ -33,8 +33,8 @@
     -webkit-text-fill-color: transparent;
   }
   p {
+    padding: 45px;
     color: white;
-    opacity: 0.8;
     font-size: 30px;
     font-weight: lighter;
   }
@@ -71,5 +71,23 @@
 
   .footer .fa-heart {
     color: #D23333;
+  }
+}
+
+@media(max-width: 768px) {
+  .banner {
+    h1 {
+      font-size: 65px;
+    }
+    p {
+      padding: 29px;
+      font-size: 19px;
+      a {
+        font-size: 12px;
+        margin-left: 0px;
+        padding: 8px;
+      }
+    }
+
   }
 }
