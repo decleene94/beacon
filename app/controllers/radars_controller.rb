@@ -1,5 +1,6 @@
 class RadarsController < ApplicationController
   before_action :authenticate_user!
+
   def index
     presentable_radars = Radar.presentable(current_user)
 
@@ -17,7 +18,7 @@ class RadarsController < ApplicationController
         lat: radar.latitude,
         lng: radar.longitude,
         infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
-        activity: radar.activity_id
+        activity: radar.activity_id,
       }
     end
   end
@@ -69,11 +70,11 @@ class RadarsController < ApplicationController
   end
 
   def leave
-      @radar = Radar.find(params[:id])
-      @user = current_user
-      @radar.participants.delete(current_user)
-      @radar.save
-      redirect_to radars_path
+    @radar = Radar.find(params[:id])
+    @user = current_user
+    @radar.participants.delete(current_user)
+    @radar.save
+    redirect_to radars_path
   end
 
   def edit
@@ -86,5 +87,4 @@ class RadarsController < ApplicationController
   def radar_params
     params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id, :latitude, :longitude, :private, :address)
   end
-
 end

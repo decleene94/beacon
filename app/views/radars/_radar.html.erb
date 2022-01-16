@@ -18,7 +18,7 @@
         <div class="card-user-beacon-details">
           <div>
             <h4><%= radar.description %></h4>
-            <p><%= radar.radius %>km</p>
+            <p><%= radar.creator.first_name %> is <%= current_user.distance_to(radar.address).floor %>km away</p>
             <hr>
           </div>
           <div>
