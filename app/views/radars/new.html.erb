@@ -6,9 +6,7 @@
         <%= f.input :activity_id, collection: Activity.all%>
         <%= f.input :time, as: :time, html5: true %>
         <%= f.input :description, as: :text %>
-        <a class="btn btn-info" data-location-target="button" data-action="click->location#getCoordinates">Use my current location</a>
-        <%= f.input :longitude, as: :hidden, input_html: {data: {location_target: 'longitude'}}  %>
-        <%= f.input :latitude, as: :hidden, input_html: {data: {location_target: 'latitude'}} %>
+        <%= f.input :address, as: :text, input_html: { autocomplete: "address-name" } %>
         <%= f.input :private, as: :boolean, checked_value: true, unchecked_value: false %>
         <%= f.button :submit, class: "btn btn-primary"%>
       <% end %>
