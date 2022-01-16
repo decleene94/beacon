@@ -12,9 +12,6 @@
           <%= link_to "CREATE A BEACON", new_radar_path(), class: "beacon-join-button" %>
         </li>
         <li class="nav-item-str">
-          <p>Beacon created: <span ><%= Radar.all.where(creator_id: current_user.id).count %></span> </p>
-        </li>
-        <li class="nav-item-str">
           <p><%= current_user.first_name %></p>
         </li>
         <li class="nav-item dropdown">
