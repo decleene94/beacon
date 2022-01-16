@@ -1,3 +1,46 @@
+.chat-header {
+  background: linear-gradient(183deg, #6cc9ac, #ffffff);
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 14px;
+
+  span {
+    color: white;
+        text-shadow: 1px 1px rgba(0,0,0,0.1);
+  }
+
+  .beacon-message-details {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      padding: 7px 10px 3px 10px;
+      margin: 7px 4px 0px 0px;
+    }
+  }
+
+  h4 {
+    font-size: 30px;
+    padding-top: 12px;
+    text-shadow: 2px 1px rgba(0,0,0,0.2)
+  }
+
+  p {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bolder;
+    color: #777777;
+  }
+
+  hr {
+    margin: 10px 0px 10px 0px;
+  }
+
+  #beacon-activity {
+    font-size: 30px;
+  }
+}
 .messages {
   font-size: 14px;
   margin-top: 8px;
@@ -69,29 +112,7 @@ input.form-control {
   }
 }
 
-.chat-header {
-    background: linear-gradient(183deg, #6cc9ac, #ffffff);
-    color: white;
-    padding: 10px 20px;
-    margin-top: 10px;
-    border-radius: 14px;
-  h4 {
-    padding-top: 10px;
-  }
 
-  p {
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bolder;
-    color: #777777;
-  }
-  hr {
-    margin: 10px 0px 10px 0px;
-  }
-  #beacon-activity {
-    font-size: 30px;
-  }
-}
 
 .message-submit-btn {
   border-radius: 14px;
