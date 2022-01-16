@@ -5,6 +5,14 @@
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("friends.jpeg");
   background-size: cover;
 
+   h2 {
+    top: 13px;
+    left: 58px;
+    position: absolute;
+    font-size: 29px;
+    text-shadow: 2px 5px 4px rgba(0,0,0,0.8);
+   }
+
   .beacon-nav-header {
     position: absolute;
     top: 19px;
