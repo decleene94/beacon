@@ -8,7 +8,7 @@
         <%= f.input :description, as: :text %>
         <%= f.input :address, as: :text, input_html: { autocomplete: "address-name" } %>
         <%= f.input :private, as: :boolean, checked_value: true, unchecked_value: false %>
-        <%= f.button :submit, input_html: { value: 'Create Beacon' },  class: "btn btn-success"%>
+        <%= f.button :submit, value: 'Create Beacon',  class: "btn btn-success"%>
       <% end %>
     </div>
   </div>
