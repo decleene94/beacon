@@ -12,6 +12,7 @@ class RadarsController < ApplicationController
       @radars = presentable_radars
     end
 
+
     @markers = presentable_radars.map do |radar|
       {
         lat: radar.latitude,
