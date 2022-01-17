@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-8">
-      <div class="form-login">
+      <div class="form-login" data-controller="location">
         <h2>Sign up</h2>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
@@ -27,6 +27,9 @@
             <%= f.input :last_name,
                 required: true,
                 input_html: { autocomplete: "last-name" } %>
+            <a class="btn btn-info" data-location-target="button" data-action="click->location#getCoordinates">Use my current location</a>
+            <%= f.input :longitude, input_html: {data: {location_target: 'longitude'}}  %>
+            <%= f.input :latitude, input_html: {data: {location_target: 'latitude'}} %>
             <%= f.input :photo, as: :file,
                 required: true %>
           </div>

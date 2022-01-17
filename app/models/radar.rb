@@ -4,9 +4,9 @@ class Radar < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   has_many :radar_participants
   has_many :participants, through: :radar_participants, source: :user
-  reverse_geocoded_by :latitude, :longitude
-  after_validation :reverse_geocode
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   scope :unrestricted, -> { active.where(private: false) }
   scope :restricted, -> { active.where(private: true) }

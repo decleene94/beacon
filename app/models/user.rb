@@ -15,5 +15,6 @@ class User < ApplicationRecord
   has_many :attending_radars, through: :radar_participants, source: :radar
 
   # geocoded_by :address
-  # after_validation :geocode, if: :will_save_change_to_address?
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :geocode, if: :will_save_change_to_address?
 end
