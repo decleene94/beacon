@@ -15,6 +15,7 @@ export default class extends Controller {
     // console.log(position.coords.longitude);
     this.latitudeTarget.value = position.coords.latitude;
     this.longitudeTarget.value = position.coords.longitude;
+    this.buttonTarget.innerText = 'Location saved!'
   };
 
   errorCallback(error) {

@@ -33,35 +33,40 @@ puts "****"*20
 #               [1.2893853867448841, 103.86342200463666],
 #               [1.2863651667042184, 103.85917300916131]]
 
-# miguel = User.create!(
-#     email: "miguel@123.com",
-#     password: "beacon",
-#     first_name: "Miguel",
-#     last_name: "Vela",
-#   )
+miguel = User.create!(
+    email: "miguel@123.com",
+    password: "beacon",
+    first_name: "Miguel",
+    last_name: "Vela",
+    phone: '+6591556108',
+    address: '441 Balestier Road Singapore'
+  )
 
-# miguel_photo = URI.open('https://images.unsplash.com/photo-1515095984775-726a54913d0e')
-# miguel.photo.attach(io: miguel_photo, filename: "#{miguel.first_name}.jpeg", content_type:'image/png')
+miguel_photo = URI.open('https://images.unsplash.com/photo-1515095984775-726a54913d0e')
+miguel.photo.attach(io: miguel_photo, filename: "#{miguel.first_name}.jpeg", content_type:'image/png')
 
-# john = User.create!(
-#     email: "john@123.com",
-#     password: "beacon",
-#     first_name: "John",
-#     last_name: "Decl",
-#   )
+john = User.create!(
+    email: "john@123.com",
+    password: "beacon",
+    first_name: "John",
+    last_name: "Decl",
+    phone: '+6591556108',
+    address: '320 Orchard Road Singapore'
+  )
 
-# john_photo = URI.open('https://avatars.githubusercontent.com/u/88220739?v=4')
-# john.photo.attach(io: john_photo, filename: "#{john.first_name}.jpeg", content_type:'image/png')
+john_photo = URI.open('https://avatars.githubusercontent.com/u/88220739?v=4')
+john.photo.attach(io: john_photo, filename: "#{john.first_name}.jpeg", content_type:'image/png')
 
-# ann = User.create!(
-#     email: "ann@123.com",
-#     password: "beacon",
-#     first_name: "Ann",
-#     last_name: "Koh",
-#   )
+ann = User.create!(
+    email: "ann@123.com",
+    password: "beacon",
+    first_name: "Ann",
+    last_name: "Koh",
+    address: '3 Changi Business Park Central 1 Singapore'
+  )
 
-#   ann_photo = URI.open('https://avatars.githubusercontent.com/u/55132447?v=4')
-#   ann.photo.attach(io: ann_photo, filename: "#{ann.first_name}.jpeg", content_type:'image/png')
+  ann_photo = URI.open('https://avatars.githubusercontent.com/u/55132447?v=4')
+  ann.photo.attach(io: ann_photo, filename: "#{ann.first_name}.jpeg", content_type:'image/png')
 
 
 # soonteck = User.create!(
@@ -75,15 +80,17 @@ puts "****"*20
 # soonteck.photo.attach(io: soonteck_photo, filename: "#{soonteck.first_name}.jpeg", content_type: 'image/png')
 
 
-# rabea = User.create!(
-#     email: "rabea@123.com",
-#     password: "beacon",
-#     first_name: "Rabea",
-#     last_name: "Glei",
-#   )
+rabea = User.create!(
+    email: "rabea@123.com",
+    password: "beacon",
+    first_name: "Rabea",
+    last_name: "Glei",
+    phone: '91556108',
+    address: '281 Ocean Drive Singapore'
+  )
 
-#   rabea_photo = URI.open('https://avatars.githubusercontent.com/u/8995723?v=4')
-#   rabea.photo.attach(io: rabea_photo, filename: "#{rabea.first_name}.jpeg", content_type:'image/png')
+  rabea_photo = URI.open('https://avatars.githubusercontent.com/u/8995723?v=4')
+  rabea.photo.attach(io: rabea_photo, filename: "#{rabea.first_name}.jpeg", content_type:'image/png')
 
 
 puts "****"*20

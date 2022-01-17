@@ -2,13 +2,17 @@ class RadarsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    sorted_radars = Radar.near(current_user).presentable(current_user)
     presentable_radars = Radar.presentable(current_user)
+    @user = current_user
+
 
     if params[:order] == 'time'
       # to do - test with more beacons that are scheduled for the current day
       @radars = presentable_radars.sort_by(&:time)
     elsif params[:order] == 'distance'
-      @radars = presentable_radars.sort_by(&:radius)
+      @radars = sorted_radars
+      # @radars = current_user.nearbys(&:distance)
     else
       @radars = presentable_radars
     end

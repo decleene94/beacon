@@ -47,14 +47,11 @@ const initMapbox = () => {
       // Custom markers assigned based on Radar Activity
       const customMarker = document.createElement('div');
       if (marker.activity === 1) {
-        console.log(marker.activity);
         customMarker.innerHTML = '<i class="fas fa-glass-cheers fa-3x"></i>';
         customMarker.style.color = '#1AB8C7';
-        customMarker.style.backgroundSize = 'contain';
       } else if (marker.activity === 2) {
         customMarker.innerHTML = '<i class="fas fa-coffee fa-3x"></i>';
         customMarker.style.color = '#1AB8C7';
-        customMarker.style.backgroundSize = 'contain';
       } else if (marker.activity === 4 ) {
         customMarker.innerHTML = '<i class="fas fa-utensils fa-3x"></i>';
         customMarker.style.color = '#1AB8C7';
