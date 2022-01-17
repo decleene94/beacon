@@ -6,7 +6,6 @@ class RadarsController < ApplicationController
     presentable_radars = Radar.presentable(current_user)
     @user = current_user
 
-
     if params[:order] == 'time'
       # to do - test with more beacons that are scheduled for the current day
       @radars = presentable_radars.sort_by(&:time)

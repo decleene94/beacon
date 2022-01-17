@@ -20,7 +20,7 @@ import { initRadarCable } from "../channels/radar_channel";
 import { initMapbox } from '../packs/map';
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
-import { initAutocomplete } from "../plugins/init_autocomplete";
+// import { initAutocomplete } from "../plugins/init_autocomplete";
 
 const application = Application.start()
 const context = require.context("./controllers", true, /\.js$/)
@@ -40,6 +40,6 @@ document.addEventListener('turbolinks:load', () => {
   initRadarCable();
 });
 
-document.addEventListener('turbolinks:load', () => {
-  initAutocomplete();
-});
+// document.addEventListener('turbolinks:load', () => {
+//   initAutocomplete();
+// });
