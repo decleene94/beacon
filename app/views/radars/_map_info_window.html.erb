@@ -10,6 +10,7 @@
     <div>
       <!-- <h5><%= button_to "Follow", follow_user_path(radar.creator.id), method: "POST", class:"btn btn-sm btn-outline-info"  %></h5> -->
       <% if current_user == radar.creator %>
+
       <% elsif current_user.followees.include?(radar.creator) %>
           <h5><%= button_to "Following", unfollow_user_path(radar.creator.id), method: "POST", class:"btn btn-sm btn-outline-info"  %></h5>
       <% else %>
