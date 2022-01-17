@@ -51,9 +51,9 @@ class RadarsController < ApplicationController
     @radar = Radar.new
   end
 
-  def delete
+  def destroy
     @radar = Radar.find(params[:id])
-    @user = current_user
+    #@user = current_user
     @radar.destroy
     redirect_to radars_path
   end
