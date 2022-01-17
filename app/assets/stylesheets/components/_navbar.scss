@@ -1,6 +1,11 @@
-.navbar-lewagon {
+.navbar-beacon {
   justify-content: space-between;
   background: white;
+
+  #logo-text {
+    display: inline;
+    color: #85CDCB;
+  }
 
   .nav-item-str {
     padding: 14px 20px 0px 2px;
@@ -12,14 +17,11 @@
       }
     }
     }
+
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-beacon .navbar-collapse {
   flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
 }
 
 .beacon-logo {
