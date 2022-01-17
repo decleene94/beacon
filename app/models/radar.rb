@@ -2,8 +2,8 @@ class Radar < ApplicationRecord
   has_many :messages
   has_one :activity
   belongs_to :creator, class_name: 'User'
-  has_many :radar_participants
-  has_many :participants, through: :radar_participants, source: :user
+  has_many :radar_participants, dependent: :destroy
+  has_many :participants, through: :radar_participants, source: :user, dependent: :destroy
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
