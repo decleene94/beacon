@@ -1,5 +1,5 @@
   .beacon-join-button {
-    padding: 8px;
+    padding: 12px;
     background: linear-gradient(282deg, #61c89f, #85CDCB);
     text-decoration: none;
     color: white;
@@ -83,4 +83,17 @@
   .dropdown:hover .dropbtn {
     background-color: #61c89f;
     color: white ;
+  }
+
+  .call-to-action-btn {
+    font-size: 20px;
+    background: #61c89f;
+    margin-left: 20px;
+    padding: 14px;
+
+    &:hover {
+      text-decoration: none;
+      background: #2d654f;
+      box-shadow: 0px 0px 0px 0px rgba(93, 223, 117, 0.5);
+    }
   }

@@ -23,7 +23,12 @@
             <p style="margin: 0px; font-weight: bolder;" id="beacon-activity"> <%= @radar.time.to_time.strftime("%l:%M%p") %></p>
           </div>
         </div>
+          <div>
           <%= link_to "Leave", leave_radar_path(@radar), method: "POST", class: "btn btn-outline-danger" %>
+          <% if current_user == @radar.creator %>
+          <%= link_to "Delete", radar_path(@radar), method: "DELETE", class: "btn btn-outline-danger" %>
+          <% end %>
+          </div>
         </div>
       </div>
       <div class="messages">

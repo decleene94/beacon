@@ -76,9 +76,9 @@ ActiveRecord::Schema.define(version: 2022_01_15_064704) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "creator_id"
     t.boolean "private", default: false
+    t.datetime "time"
     t.float "longitude"
     t.float "latitude"
-    t.datetime "time"
     t.text "address"
     t.index ["activity_id"], name: "index_radars_on_activity_id"
     t.index ["creator_id"], name: "index_radars_on_creator_id"
