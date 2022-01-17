@@ -6,7 +6,9 @@ class Radar < ApplicationRecord
   has_many :participants, through: :radar_participants, source: :user, dependent: :destroy
 
   geocoded_by :address
+  reverse_geocoded_by :latitude, :longitude
   after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :reverse_geocode, :if => :latitude_changed?, :if => :longitude_changed?
 
   scope :unrestricted, -> { active.where(private: false) }
   scope :restricted, -> { active.where(private: true) }
@@ -22,4 +24,5 @@ class Radar < ApplicationRecord
     second_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 23, 59, 59, 0)
     where(time: first_date..second_date)
   end
+
 end

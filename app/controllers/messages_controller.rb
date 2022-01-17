@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-
   before_action :authenticate_user!
+
   def create
     @radar = Radar.find(params[:radar_id])
     @message = Message.new(message_params)
@@ -22,5 +22,4 @@ class MessagesController < ApplicationController
   def message_params
     params.required(:message).permit(:content)
   end
-
 end

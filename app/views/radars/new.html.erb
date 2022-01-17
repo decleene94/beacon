@@ -6,7 +6,7 @@
         <%= f.input :activity_id, collection: Activity.all%>
         <%= f.input :time, as: :time, html5: true %>
         <%= f.input :description, as: :text %>
-        <%= f.input :address, as: :text, input_html: { autocomplete: "address-name" } %>
+        <%= f.input :address, as: :string, input_html: { id: 'address' } %>
         <%= f.input :private, as: :boolean, checked_value: true, unchecked_value: false %>
         <%= f.button :submit, value: 'Create Beacon',  class: "btn btn-success"%>
       <% end %>

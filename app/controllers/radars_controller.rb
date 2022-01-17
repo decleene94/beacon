@@ -1,13 +1,17 @@
 class RadarsController < ApplicationController
   before_action :authenticate_user!
+
   def index
+    sorted_radars = Radar.near(current_user).presentable(current_user)
     presentable_radars = Radar.presentable(current_user)
+    @user = current_user
 
     if params[:order] == 'time'
       # to do - test with more beacons that are scheduled for the current day
       @radars = presentable_radars.sort_by(&:time)
     elsif params[:order] == 'distance'
-      @radars = presentable_radars.sort_by(&:radius)
+      @radars = sorted_radars
+      # @radars = current_user.nearbys(&:distance)
     else
       @radars = presentable_radars
     end
@@ -18,7 +22,7 @@ class RadarsController < ApplicationController
         lat: radar.latitude,
         lng: radar.longitude,
         infoWindow: { content: render_to_string(partial: "/radars/map_info_window", locals: { radar: radar }) },
-        activity: radar.activity_id
+        activity: radar.activity_id,
       }
     end
   end
@@ -70,11 +74,11 @@ class RadarsController < ApplicationController
   end
 
   def leave
-      @radar = Radar.find(params[:id])
-      @user = current_user
-      @radar.participants.delete(current_user)
-      @radar.save
-      redirect_to radars_path
+    @radar = Radar.find(params[:id])
+    @user = current_user
+    @radar.participants.delete(current_user)
+    @radar.save
+    redirect_to radars_path
   end
 
   def edit
@@ -87,5 +91,4 @@ class RadarsController < ApplicationController
   def radar_params
     params.require(:radar).permit(:time, :radius, :description, :user_id, :activity_id, :latitude, :longitude, :private, :address)
   end
-
 end
