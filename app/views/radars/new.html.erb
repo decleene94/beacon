@@ -7,7 +7,7 @@
         <%= f.input :time, as: :time, html5: true %>
         <%= f.input :description, as: :text, placeholder: 'Share a Description' %>
         <%= f.input :address, as: :string, input_html: { id:'beacon_address'}, label: 'Address: Pick a place to meet', placeholder: '181 Orchard Road Singapore..' %>
-        <a class="btn btn-info" data-location-target="button" data-action="click->location#getCoordinates">Use my current location</a>
+        <a class="btn btn-info" data-location-target="button" data-action="click->location#getCoordinates">Let's meet at my current location</a>
         <%= f.input :longitude, as: :hidden, input_html: {data: {location_target: 'longitude'}}  %>
         <%= f.input :latitude, as: :hidden, input_html: {data: {location_target: 'latitude'}} %>
         <%= f.input :private, as: :boolean, checked_value: true, unchecked_value: false, label: 'Private - Only your Followers will see your Beacon' %>
