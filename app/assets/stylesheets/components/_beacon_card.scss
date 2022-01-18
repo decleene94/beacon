@@ -1,6 +1,8 @@
 .main-container {
   #map {
-    height: 80vh;
+    height: 100vh;
+    position: sticky;
+    top: 0;
   }
 
   .beacon-description {
