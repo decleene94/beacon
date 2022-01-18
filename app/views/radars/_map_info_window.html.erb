@@ -24,7 +24,7 @@
         <p style="margin: 0px; font-weight: 200;">What are you waiting for?</p>
       <% else %>
         <% radar.participants.each do |participant| %>
-        <img class="avatar m-2" src=<%= cl_image_path(participant.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %>>
+        <img class="avatar m-2" src=<%= cl_image_path(participant.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face) %>>
         <% end %>
       <% end %>
   </div >
