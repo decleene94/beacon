@@ -68,6 +68,17 @@ ann = User.create!(
   ann_photo = URI.open('https://avatars.githubusercontent.com/u/55132447?v=4')
   ann.photo.attach(io: ann_photo, filename: "#{ann.first_name}.jpeg", content_type:'image/png')
 
+  rabea = User.create!(
+      email: "rabea@123.com",
+      password: "beacon",
+      first_name: "Rabea",
+      last_name: "Glei",
+      phone: '91556108',
+      address: '281 Ocean Drive Singapore'
+    )
+
+    rabea_photo = URI.open('https://avatars.githubusercontent.com/u/8995723?v=4')
+    rabea.photo.attach(io: rabea_photo, filename: "#{rabea.first_name}.jpeg", content_type:'image/png')
 
 # soonteck = User.create!(
 #     email: "st@123.com",
@@ -78,19 +89,6 @@ ann = User.create!(
 
 # soonteck_photo = URI.open('https://images.unsplash.com/photo-1540569014015-19a7be504e3a')
 # soonteck.photo.attach(io: soonteck_photo, filename: "#{soonteck.first_name}.jpeg", content_type: 'image/png')
-
-
-rabea = User.create!(
-    email: "rabea@123.com",
-    password: "beacon",
-    first_name: "Rabea",
-    last_name: "Glei",
-    phone: '91556108',
-    address: '281 Ocean Drive Singapore'
-  )
-
-  rabea_photo = URI.open('https://avatars.githubusercontent.com/u/8995723?v=4')
-  rabea.photo.attach(io: rabea_photo, filename: "#{rabea.first_name}.jpeg", content_type:'image/png')
 
 
 puts "****"*20
