@@ -48,19 +48,19 @@ const initMapbox = () => {
       const customMarker = document.createElement('div');
       if (marker.activity === 1) {
         customMarker.innerHTML = '<i class="fas fa-glass-cheers fa-3x"></i>';
-        customMarker.style.color = '#1AB8C7';
+        customMarker.style.color = '#008080';
       } else if (marker.activity === 2) {
         customMarker.innerHTML = '<i class="fas fa-coffee fa-3x"></i>';
-        customMarker.style.color = '#1AB8C7';
+        customMarker.style.color = '#008080';
       } else if (marker.activity === 4 ) {
         customMarker.innerHTML = '<i class="fas fa-utensils fa-3x"></i>';
-        customMarker.style.color = '#1AB8C7';
+        customMarker.style.color = '#008080';
       } else if (marker.activity === 5) {
         customMarker.innerHTML = '<i class="fas fa-music fa-3x"></i>';
-        customMarker.style.color = '#1AB8C7';
+        customMarker.style.color = '#008080';
       } else {
         customMarker.innerHTML = '<i class="fas fa-hamburger"></i>';
-        customMarker.style.color = '#1AB8C7';
+        customMarker.style.color = '#008080';
       }
 
       const newMarker = new mapboxgl.Marker(customMarker)
