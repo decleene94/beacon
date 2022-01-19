@@ -4,7 +4,10 @@ class Radar < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   has_many :radar_participants, dependent: :destroy
   has_many :participants, through: :radar_participants, source: :user, dependent: :destroy
-
+  validates :time, presence: true
+  validates :activity_id, presence: true
+  validates :description, presence: true, length: { minimum: 10 }
+  
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
   after_validation :geocode, if: :will_save_change_to_address?
@@ -24,5 +27,4 @@ class Radar < ApplicationRecord
     second_date = DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, 23, 59, 59, 0)
     where(time: first_date..second_date)
   end
-
 end

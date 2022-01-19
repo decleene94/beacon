@@ -19,9 +19,10 @@ require("channels")
 import { initRadarCable } from "../channels/radar_channel";
 import { initMapbox } from '../packs/map';
 import { Application } from "stimulus"
-import { definitionsFromContext } from "stimulus/webpack-helpers"
 import { initAutocomplete } from "../plugins/init_autocomplete";
+import { initSweetalert } from '../plugins/init_sweetalert';
 
+import { definitionsFromContext } from "stimulus/webpack-helpers"
 const application = Application.start()
 const context = require.context("./controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))
@@ -39,4 +40,10 @@ document.addEventListener('turbolinks:load', () => {
 
 document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
+});
+
+
+initSweetalert('#sweet-alert-demo', {
+  title: "You've created a Beacon",
+  icon: "success",
 });

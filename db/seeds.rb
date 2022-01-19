@@ -45,40 +45,40 @@ miguel = User.create!(
 miguel_photo = URI.open('https://images.unsplash.com/photo-1515095984775-726a54913d0e')
 miguel.photo.attach(io: miguel_photo, filename: "#{miguel.first_name}.jpeg", content_type:'image/png')
 
-john = User.create!(
-    email: "john@123.com",
-    password: "beacon",
-    first_name: "John",
-    last_name: "Decl",
-    phone: '+6591556108',
-    address: '320 Orchard Road Singapore'
-  )
+# john = User.create!(
+#     email: "john@123.com",
+#     password: "beacon",
+#     first_name: "John",
+#     last_name: "Decl",
+#     phone: '+6591556108',
+#     address: '320 Orchard Road Singapore'
+#   )
 
-john_photo = URI.open('https://avatars.githubusercontent.com/u/88220739?v=4')
-john.photo.attach(io: john_photo, filename: "#{john.first_name}.jpeg", content_type:'image/png')
+# john_photo = URI.open('https://avatars.githubusercontent.com/u/88220739?v=4')
+# john.photo.attach(io: john_photo, filename: "#{john.first_name}.jpeg", content_type:'image/png')
 
-ann = User.create!(
-    email: "ann@123.com",
-    password: "beacon",
-    first_name: "Ann",
-    last_name: "Koh",
-    address: '3 Changi Business Park Central 1 Singapore'
-  )
+# ann = User.create!(
+#     email: "ann@123.com",
+#     password: "beacon",
+#     first_name: "Ann",
+#     last_name: "Koh",
+#     address: '3 Changi Business Park Central 1 Singapore'
+#   )
 
-  ann_photo = URI.open('https://avatars.githubusercontent.com/u/55132447?v=4')
-  ann.photo.attach(io: ann_photo, filename: "#{ann.first_name}.jpeg", content_type:'image/png')
+#   ann_photo = URI.open('https://avatars.githubusercontent.com/u/55132447?v=4')
+#   ann.photo.attach(io: ann_photo, filename: "#{ann.first_name}.jpeg", content_type:'image/png')
 
-  rabea = User.create!(
-      email: "rabea@123.com",
-      password: "beacon",
-      first_name: "Rabea",
-      last_name: "Glei",
-      phone: '91556108',
-      address: '281 Ocean Drive Singapore'
-    )
+#   rabea = User.create!(
+#       email: "rabea@123.com",
+#       password: "beacon",
+#       first_name: "Rabea",
+#       last_name: "Glei",
+#       phone: '91556108',
+#       address: '281 Ocean Drive Singapore'
+#     )
 
-    rabea_photo = URI.open('https://avatars.githubusercontent.com/u/8995723?v=4')
-    rabea.photo.attach(io: rabea_photo, filename: "#{rabea.first_name}.jpeg", content_type:'image/png')
+#     rabea_photo = URI.open('https://avatars.githubusercontent.com/u/8995723?v=4')
+#     rabea.photo.attach(io: rabea_photo, filename: "#{rabea.first_name}.jpeg", content_type:'image/png')
 
 # soonteck = User.create!(
 #     email: "st@123.com",
@@ -95,11 +95,16 @@ puts "****"*20
 puts "Creating Activities..."
 puts "****"*20
 
+breakfast = Activity.create!(name: "Breakfast")
+lunch = Activity.create!(name: "Lunch")
+dinner = Activity.create!(name: "Dinner")
 drinks = Activity.create!(name: "Drinks")
 coffee = Activity.create!(name: "Coffee")
-brunch = Activity.create!(name: "Brunch")
-dinner = Activity.create!(name: "Dinner")
 party = Activity.create!(name: "Party")
+workout = Activity.create!(name: "Workout")
+others = Activity.create!(name: "Others")
+
+
 
 puts "****"*20
 puts "Creating Radars..."
