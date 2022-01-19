@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :followees, through: :followed_users
   has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
   has_many :followers, through: :following_users
+  validates :phone, format: { with: /\+[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/, message: "Do not include hyphens" }
 
   has_many :radars, foreign_key: 'creator_id', class_name: 'Radar'
   has_many :radar_participants
