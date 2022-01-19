@@ -16,14 +16,13 @@ export default class extends Controller {
     this.latitudeTarget.value = position.coords.latitude;
     this.longitudeTarget.value = position.coords.longitude;
     this.buttonTarget.innerText = 'You have picked your current location!';
-    this.fieldTarget.type = 'hidden';
-    this.fieldTarget.value = '';
+    const address = document.getElementById('beacon_address');
+    console.log(address());
   };
 
   errorCallback(error) {
     // fieldTarget.innerText = 'Please enter your address!!!'
     console.error(error);
-    console.log(this);
   };
 
   options() {
