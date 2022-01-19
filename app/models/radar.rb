@@ -1,5 +1,5 @@
 class Radar < ApplicationRecord
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_one :activity
   belongs_to :creator, class_name: 'User'
   has_many :radar_participants, dependent: :destroy
@@ -7,7 +7,7 @@ class Radar < ApplicationRecord
   validates :time, presence: true
   validates :activity_id, presence: true
   validates :description, presence: true, length: { minimum: 10 }
-  
+
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
   after_validation :geocode, if: :will_save_change_to_address?
