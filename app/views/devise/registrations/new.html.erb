@@ -10,11 +10,6 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-            <%= f.input :phone,
-                required: true,
-                label: 'Phone Number (please include country code - e.g. +65)',
-                autofocus: true,
-                input_html: { autocomplete: "phone" }%>
             <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -28,6 +23,11 @@
             <%= f.input :last_name,
                 required: true,
                 input_html: { autocomplete: "last-name" } %>
+            <%= f.input :phone,
+                required: true,
+                label: 'Phone Number (please include country code - e.g. +65)',
+                autofocus: true,
+                input_html: { autocomplete: "phone" }%>
             <a class="btn btn-info" data-location-target="button" data-action="click->location#getCoordinates">Use my current location</a>
             <%= f.input :longitude, input_html: {data: {location_target: 'longitude'}}  %>
             <%= f.input :latitude, input_html: {data: {location_target: 'latitude'}} %>

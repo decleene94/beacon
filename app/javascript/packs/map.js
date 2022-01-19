@@ -12,11 +12,11 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey
 
     const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [103.84105, 1.3020],
-        zoom: 15
-      });
+      container: 'map',
+      style: 'mapbox://styles/rober2miguel/ckye0z03i0t3z14nv4axkh569',
+      center: [103.84105, 1.3020],
+      zoom: 15
+    });
 
     map.addControl(
       new mapboxgl.GeolocateControl({
@@ -46,27 +46,36 @@ const initMapbox = () => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow.content);
       // Custom markers assigned based on Radar Activity
       const customMarker = document.createElement('div');
-      if (marker.activity === 1) {
+      if (marker.activity === 4) {
         customMarker.innerHTML = '<i class="fas fa-glass-cheers fa-3x"></i>';
-        customMarker.style.color = '#1AB8C7';
-      } else if (marker.activity === 2) {
-        customMarker.innerHTML = '<i class="fas fa-coffee fa-3x"></i>';
-        customMarker.style.color = '#1AB8C7';
-      } else if (marker.activity === 4 ) {
-        customMarker.innerHTML = '<i class="fas fa-utensils fa-3x"></i>';
-        customMarker.style.color = '#1AB8C7';
+        customMarker.style.color = '#008080';
       } else if (marker.activity === 5) {
+        customMarker.innerHTML = '<i class="fas fa-coffee fa-3x"></i>';
+        customMarker.style.color = '#008080';
+      } else if (marker.activity === 1 ) {
+        customMarker.innerHTML = '<i class="fas fa-utensils fa-3x"></i>';
+        customMarker.style.color = '#008080';
+      } else if (marker.activity === 2) {
+        customMarker.innerHTML = '<i class="fas fa-utensils fa-3x"></i>';
+        customMarker.style.color = '#008080';
+      } else if (marker.activity === 3) {
+        customMarker.innerHTML = '<i class="fas fa-utensils fa-3x"></i>';
+        customMarker.style.color = '#008080';
+      } else if (marker.activity === 6) {
         customMarker.innerHTML = '<i class="fas fa-music fa-3x"></i>';
-        customMarker.style.color = '#1AB8C7';
+        customMarker.style.color = '#008080';
+      } else if (marker.activity === 7) {
+        customMarker.innerHTML = '<i class="fas fa-running fa-3x"></i>';
+        customMarker.style.color = '#008080';
       } else {
-        customMarker.innerHTML = '<i class="fas fa-hamburger"></i>';
-        customMarker.style.color = '#1AB8C7';
+        customMarker.innerHTML = '<i class="fas fa-users fa-3x"></i>';
+        customMarker.style.color = '#008080';
       }
 
       const newMarker = new mapboxgl.Marker(customMarker)
-      .setLngLat([marker.lng, marker.lat])
-      .setPopup(popup)
-      .addTo(map);
+        .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup)
+        .addTo(map);
       mapMarkers.push(newMarker)
     });
 

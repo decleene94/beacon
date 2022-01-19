@@ -19,27 +19,31 @@ require("channels")
 import { initRadarCable } from "../channels/radar_channel";
 import { initMapbox } from '../packs/map';
 import { Application } from "stimulus"
-import { definitionsFromContext } from "stimulus/webpack-helpers"
-// import { initAutocomplete } from "../plugins/init_autocomplete";
+import { initAutocomplete } from "../plugins/init_autocomplete";
+import { initSweetalert } from '../plugins/init_sweetalert';
 
+import { definitionsFromContext } from "stimulus/webpack-helpers"
 const application = Application.start()
 const context = require.context("./controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))
 
-// import { cardExtendDetails } from "../packs/cards";
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
 });
 
-// document.addEventListener("turbolinks:load", () => {
-//   cardExtendDetails();
-// });
 
 document.addEventListener('turbolinks:load', () => {
   initRadarCable();
 });
 
-// document.addEventListener('turbolinks:load', () => {
-//   initAutocomplete();
-// });
+
+document.addEventListener('turbolinks:load', () => {
+  initAutocomplete();
+});
+
+
+initSweetalert('#sweet-alert-demo', {
+  title: "You've created a Beacon",
+  icon: "success",
+});
