@@ -3,7 +3,7 @@
   <div class="card-user-section-info">
     <div class="user-section-info" style="display: flex; align-items: center; padding: 0px 0px 0px 15px;"">
       <img class="avatar-large" src= <%= cl_image_path(radar.creator.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face) %> />
-      <div style="text-align: center;">
+      <div style="text-align: center; padding-left: 10px">
         <p style="margin: 0px; font-weight: lighter; display: inline;">Activity</p>
         <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= Activity.find(radar.activity_id).name.capitalize %></p>
       </div>
