@@ -1,7 +1,7 @@
 .main-container {
   #map {
     height: 100vh;
-    position: sticky;
+    // position: sticky;
     top: 0;
   }
 
@@ -9,6 +9,15 @@
      color: #61c89f;
      text-align: center;
      margin: 10px;
+
+    .blink_icon {
+        animation: blinker 2s linear infinite;
+    }
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
   }
 }
 
@@ -41,7 +50,7 @@
   .card-user-beacon-details {
     display: flex;
     flex-direction: column;
-    margin: 20px 0px 10px 20px;
+    padding: 20px 42px 20px 44px;
 
     hr {
       margin: 3px 30px 6px 0px;
