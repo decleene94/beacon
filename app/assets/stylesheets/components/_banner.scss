@@ -103,7 +103,12 @@
 @media(max-width: 768px) {
   .banner {
     h1 {
-      font-size: 65px;
+      font-size: 57px;
+    }
+
+    .beacon-logo {
+      height: 40px;
+      width: 45px;
     }
     p {
       padding: 29px;
@@ -114,6 +119,9 @@
         padding: 8px;
         display: block;
       }
+    }
+    .footer-copyrights {
+      padding-left: 70px;
     }
 
   }

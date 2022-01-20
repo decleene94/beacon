@@ -119,3 +119,60 @@ input.form-control {
 .send-btn {
   margin: 10px 0px;
 }
+
+
+@media(max-width: 768px) {
+  .chat-header {
+    background: linear-gradient(183deg, #6cc9ac, #ffffff);
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 14px;
+
+    span {
+      display: none;
+      color: white;
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .beacon-message-details {
+      display: flex;
+      justify-content: space-between;
+
+      .beacon-message-details-activity {
+        display: flex;
+      }
+      a {
+        padding: 7px 10px 3px 10px;
+        margin: 7px 4px 0px 0px;
+      }
+    }
+
+    h4 {
+      font-size: 20px;
+      padding-top: 12px;
+      text-shadow: 2px 1px rgba(0, 0, 0, 0.2)
+    }
+
+    .resp-sharing-button__link {
+      margin: 0px;
+      width: 23px;
+    }
+
+    p {
+      display: inline-block;
+      font-size: 20px;
+      font-weight: bolder;
+      color: #777777;
+    }
+
+    hr {
+      margin: 10px 0px 10px 0px;
+    }
+
+    #beacon-activity {
+      font-size: 20px;
+      display: block;
+    }
+  }
+}
