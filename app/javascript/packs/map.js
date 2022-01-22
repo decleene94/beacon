@@ -3,7 +3,6 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from '!mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-
 // Creating my map
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -18,16 +17,6 @@ const initMapbox = () => {
       zoom: 15
     });
 
-    map.addControl(
-      new mapboxgl.GeolocateControl({
-        positionOptions: {
-          enableHighAccuracy: true
-        },
-        trackUserLocation: true,
-        showUserHeading: true
-      })
-    );
-
     const geocoder = new MapboxGeocoder({
       // Initialize the geocoder
       accessToken: mapboxgl.accessToken,
@@ -38,8 +27,17 @@ const initMapbox = () => {
     // Insert geocoder inside the map
     map.addControl(geocoder);
 
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true,
+        showUserHeading: true
+      })
+      );
+
     const markers = JSON.parse(mapElement.dataset.markers);
-    console.log(markers);
     // Here we store map markers in an array
     const mapMarkers = []
     markers.forEach((marker) => {
@@ -52,7 +50,7 @@ const initMapbox = () => {
       } else if (marker.activity === 5) {
         customMarker.innerHTML = '<i class="fas fa-coffee fa-3x"></i>';
         customMarker.style.color = '#008080';
-      } else if (marker.activity === 1 ) {
+      } else if (marker.activity === 1) {
         customMarker.innerHTML = '<i class="fas fa-utensils fa-3x"></i>';
         customMarker.style.color = '#008080';
       } else if (marker.activity === 2) {
@@ -79,17 +77,17 @@ const initMapbox = () => {
       mapMarkers.push(newMarker)
     });
 
-    fitMapToMarkers(map, markers);
+    // fitMapToMarkers(map, markers);
     // We give the array of marker to a new function called "openInfoWindow"
     openInfoWindow(mapMarkers);
   }
 };
 
-const fitMapToMarkers = (map, markers) => {
-  const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
-  map.fitBounds(bounds, { duration: 0, padding: 75, maxZoom: 15 });
-};
+// const fitMapToMarkers = (map, markers) => {
+//   const bounds = new mapboxgl.LngLatBounds();
+//   markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+//   map.fitBounds(bounds, { duration: 0, padding: 75, maxZoom: 15 });
+// };
 
 const openInfoWindow = (markers) => {
   // Select all cards

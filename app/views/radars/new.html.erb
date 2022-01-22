@@ -1,18 +1,18 @@
 <%= render 'shared/navbar' %>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-4" data-controller="location">
+    <div class="col-12 col-sm-4 form-login" data-controller="location">
       <%= simple_form_for @radar do |f| %>
+        <h2>Beacon</h2>
         <%= f.input :activity_id, collection: Activity.all, prompt: 'Select an Activity', required: true %>
         <%= f.input :time, as: :time, html5: true %>
-        <%= f.input :description, as: :text, placeholder: 'Share a Description', required: true %>
-        <p>Pick one: Address or Current Location</p>
-        <%= f.input :address, as: :string, input_html: { id:'beacon_address'}, label: 'Address: Pick a place to meet', placeholder: '181 Orchard Road Singapore..' %>
-        <a class="btn btn-info address" data-location-target="button" data-action="click->location#getCoordinates"> Set Address to your current location</a>
+        <%= f.input :description, as: :text, placeholder: 'What plans do you have in mind?', required: true %>
+        <%= f.input :private, as: :boolean, checked_value: true, unchecked_value: false, label: 'Private - Followers only' %>
+        <%= f.input :address, as: :string, input_html: { id:'beacon_address'}, label: 'Address:', placeholder: '181 Orchard Road Singapore..' %>
+        <a class="btn btn-success address" data-location-target="button" data-action="click->location#getCoordinates"> Set Address to your current location</a>
         <%= f.input :longitude, as: :hidden , input_html: {data: {location_target: 'longitude'}}  %>
         <%= f.input :latitude, as: :hidden, input_html: {data: {location_target: 'latitude'}} %>
-        <%= f.input :private, as: :boolean, checked_value: true, unchecked_value: false, label: 'Private - Followers and Friends only' %>
-        <%= f.button :submit, value: 'Create Beacon', id: "sweet-alert-demo", class: "btn btn-info"%>
+        <%= f.button :submit, value: 'Create Beacon', id: "sweet-alert-demo", class: "beacon-join-button", role: "alert" %>
       <% end %>
     </div>
   </div>

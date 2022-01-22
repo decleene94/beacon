@@ -1,9 +1,11 @@
   .beacon-join-button {
     padding: 12px;
     background: linear-gradient(282deg, #61c89f, #85CDCB);
+    font-weight: bold;
     text-decoration: none;
     color: white;
     border-radius: 6px;
+    margin: auto;
 
     &:hover {
       text-decoration: none;

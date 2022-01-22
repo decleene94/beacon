@@ -33,17 +33,17 @@ puts "****"*20
 #               [1.2893853867448841, 103.86342200463666],
 #               [1.2863651667042184, 103.85917300916131]]
 
-miguel = User.create!(
-    email: "miguel@123.com",
-    password: "beacon",
-    first_name: "Miguel",
-    last_name: "Vela",
-    phone: '+6591556108',
-    address: '441 Balestier Road Singapore'
-  )
+# miguel = User.create!(
+#     email: "miguel@123.com",
+#     password: "beacon",
+#     first_name: "Miguel",
+#     last_name: "Vela",
+#     phone: '+6591556108',
+#     address: '441 Balestier Road Singapore'
+#   )
 
-miguel_photo = URI.open('https://images.unsplash.com/photo-1515095984775-726a54913d0e')
-miguel.photo.attach(io: miguel_photo, filename: "#{miguel.first_name}.jpeg", content_type:'image/png')
+# miguel_photo = URI.open('https://images.unsplash.com/photo-1515095984775-726a54913d0e')
+# miguel.photo.attach(io: miguel_photo, filename: "#{miguel.first_name}.jpeg", content_type:'image/png')
 
 # john = User.create!(
 #     email: "john@123.com",
@@ -94,7 +94,6 @@ miguel.photo.attach(io: miguel_photo, filename: "#{miguel.first_name}.jpeg", con
 puts "****"*20
 puts "Creating Activities..."
 puts "****"*20
-
 breakfast = Activity.create!(name: "Breakfast")
 lunch = Activity.create!(name: "Lunch")
 dinner = Activity.create!(name: "Dinner")
@@ -103,18 +102,5 @@ coffee = Activity.create!(name: "Coffee")
 party = Activity.create!(name: "Party")
 workout = Activity.create!(name: "Workout")
 others = Activity.create!(name: "Others")
-
-
-
 puts "****"*20
-puts "Creating Radars..."
-puts "****"*20
-
-# Radar.create!(time:"ASAP", description:"Looking for a cure for my hangover ", radius: "", user_id: john.id, activity_id: brunch.id)
-# Radar.create!(time:"ASAP", description:"Wine tasting night. I deserve this!", radius: "", user_id: venga.id, activity_id: drinks.id)
-# Radar.create!(time:"ASAP", description:"You gotta fight. For your right. To parrrrrty.", radius: "", user_id: soonteck.id, activity_id: party.id)
-# Radar.create!(time:"ASAP", description:"It's time to open my piggy bank and treat myself with Two Men Bagels", radius: "", user_id: ann.id, activity_id: brunch.id)
-# Radar.create!(time:"ASAP", description:"Farewell dinner with my close friends", radius: "", user_id: rabea.id, activity_id: dinner.id)
-
-
 puts "seeds created"
