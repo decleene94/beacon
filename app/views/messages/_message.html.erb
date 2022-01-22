@@ -2,7 +2,6 @@
   <i class="author">
 <img class="avatar m-2" src=<%= cl_image_path(message.user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face) %> />
 <span><%= message.user.first_name.capitalize %></span>
-<small style="padding-left: 8px;"><%= message.created_at.strftime("%l:%M%p") %></small>
 </i>
 <p class="message-content"><%= message.content %></p>
 </div>
