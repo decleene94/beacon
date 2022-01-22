@@ -1,6 +1,7 @@
 .main-container {
   #map {
-    height: 100vh;
+    height: 80vh;
+    width: 342px;
     position: sticky;
     top: 0;
   }
@@ -74,5 +75,8 @@
 @media(max-width: 768px) {
   .cards {
     width: 100%;
+  }
+  .main-container #map {
+    position: relative;
   }
 }

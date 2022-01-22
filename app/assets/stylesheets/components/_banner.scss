@@ -5,6 +5,7 @@
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("friends.jpeg");
   background-size: cover;
 
+
    h2 {
     top: 5px;
     left: 58px;
@@ -86,8 +87,11 @@
         font-size: 12px;
         margin-left: 0px;
         padding: 8px;
+        display: inline-grid;
       }
     }
-
+    .beacon-nav-header {
+      display: inline-block
+    }
   }
 }

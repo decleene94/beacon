@@ -1,25 +1,24 @@
 <div class="banner">
   <div style="position: absolute; top: 19px; left: 30px;">
   <%= image_tag "logo.png", class: "beacon-logo" %>
-    <h2 class="beacon-logo">beacon</h2>
+  <h2 class="beacon-logo">beacon</h2>
   </div>
   <div class="beacon-nav-header">
     <div>
       <% if current_user %>
-        <span style="padding-right: 16px;"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %></span>
+        <span class="nav-item-str" style="padding-right: 16px;" ><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %></span>
       <% else %>
-        <span style="padding-right: 16px;"><%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %></span>
+        <span class="nav-item-str" style="padding-right: 16px;"><%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %></span>
       <% end %>
       <span><%= link_to "Sign up", new_user_registration_path, class: "btn btn-info" %></span>
     </div>
   </div>
   <div class="banner-content-center">
-    <div>
+    <div class="row">
       <h1>Hang out with your friends</h1>
     </div>
-    <div>
+    <div class="row">
       <p>Send a Beacon instantly <%= link_to "CREATE A BEACON", new_radar_path(), class: "beacon-join-button call-to-action-btn" %></p>
-
     </div>
   </div>
   <div class="footer">
