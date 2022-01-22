@@ -3,15 +3,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :messages
-  has_one_attached :photo
+  has_many :messages, dependent: :destroy
+  has_one_attached :photo, dependent: :destroy
   has_many :followed_users, foreign_key: :follower_id, class_name: 'Follow'
   has_many :followees, through: :followed_users
   has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
   has_many :followers, through: :following_users
+  validates :phone, format: { with: /\+[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/, message: "Do not include hyphens" }
 
-  has_many :radars, foreign_key: 'creator_id', class_name: 'Radar'
-  has_many :radar_participants
+  has_many :radars, foreign_key: 'creator_id', class_name: 'Radar', dependent: :destroy
+  has_many :radar_participants, dependent: :destroy
   has_many :attending_radars, through: :radar_participants, source: :radar
 
   geocoded_by :address

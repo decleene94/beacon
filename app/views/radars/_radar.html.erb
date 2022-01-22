@@ -1,35 +1,40 @@
- <div class="card">
-      <div class="card-user-section-info">
-          <img class="avatar-large" src= <%= cl_image_path(radar.creator.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face) %> />
-          <div>
-            <p style="margin: 0px; font-weight: lighter; display: inline;">Activity :</p>
-            <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= Activity.find(radar.activity_id).name.capitalize %></p>
-          </div>
-          <div>
-            <p style="margin: 0px; font-weight: lighter; display: inline;">When :</p>
-            <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= radar.time.strftime("%l:%M%p") %></p>
-          </div>
-          <%= link_to "Join", join_radar_path(radar), method: "POST", class: "beacon-join-button"  %>
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDetails<%=radar.id%>" aria-expanded="true" aria-controls="collapseDetails">
-          Details
-        </button>
-      </div>
-      <div class="collapse" id="collapseDetails<%=radar.id%>">
-        <div class="card-user-beacon-details">
-          <div>
-            <h4><%= radar.description %></h4>
-            <hr>
-          </div>
-          <div>
-            <p>Participants</p>
-            <% if radar.participants.count === 0 %>
-              <p style="margin: 0px; font-weight: 200;">Empty</p>
-            <% else %>
-              <% radar.participants.each do |participant| %>
-              <img class="avatar m-1" src=<%= cl_image_path(participant.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %>>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
+
+<div class="card">
+  <div class="card-user-section-info">
+    <div class="user-section-info" style="display: flex; align-items: center; padding: 0px 0px 0px 15px;"">
+      <img class="avatar-large" src= <%= cl_image_path(radar.creator.photo.key, width: 200, height: 200, crop: :thumb, gravity: :face) %> />
+      <div style="text-align: center; padding-left: 10px">
+        <p style="margin: 0px; font-weight: lighter; display: inline;">Activity</p>
+        <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= Activity.find(radar.activity_id).name.capitalize %></p>
       </div>
     </div>
+    <div class="card-join-info" style="display: flex; align-items: center; padding: 0px 10px 0px 0px;">
+      <div style="text-align: center;">
+        <p style="margin: 0px; font-weight: lighter; display: inline;">When</p>
+        <p style="margin: 0px; font-weight: bolder; display: inline;" id="beacon-activity"> <%= radar.time.strftime("%l:%M%p") %></p>
+      </div>
+      <%= link_to "Join", join_radar_path(radar), method: "POST", class: "beacon-join-button"  %>
+      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDetails<%=radar.id%>" aria-expanded="true" aria-controls="collapseDetails">
+        Details
+      </button>
+    </div>
+  </div>
+  <div class="collapse" id="collapseDetails<%=radar.id%>">
+    <div class="card-user-beacon-details">
+      <div>
+        <h4><%= radar.description %></h4>
+        <hr>
+      </div>
+      <div>
+        <p>Participants</p>
+        <% if radar.participants.count === 0 %>
+          <p style="margin: 0px; font-weight: 200;">Empty</p>
+        <% else %>
+          <% radar.participants.each do |participant| %>
+            <img class="avatar m-1" src=<%= cl_image_path(participant.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face) %>>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
